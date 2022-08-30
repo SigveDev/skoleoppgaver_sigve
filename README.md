@@ -1,2 +1,2 @@
 # skoleoppgaver_sigve
-skoleoppgaver 2ITA
+Her legger jeg ut alle oppgavene jeg jobber på rundt året
