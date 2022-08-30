@@ -1,1 +1,1 @@
-dette er en test
+image.png
