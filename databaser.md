@@ -124,6 +124,7 @@ DELETE FROM `elev` WHERE Fornavn = "Peder";
 
 ## Oppgave 12:
 ### Oppgave 9 med annet språk:
+Koden er fra et prosjekt jeg lagde på slutten av 1. klasse og er skrevet i PHP
 ```php
 if (mysqli_num_rows($result) > 0) {
 $row = $result->fetch_assoc();
@@ -136,6 +137,53 @@ $row = $result->fetch_assoc();
         } else {
             echo "<h2>Passordene er ikke like</h2>";
         }
+    } else {
+        echo "<h2>Feil passord</h2>";
+    }
+}
+```
+
+### Oppgave 10 med annet språk:
+Koden er fra et prosjekt jeg lagde på slutten av 1. klasse og er skrevet i PHP
+```php
+if(isset($_POST["newUser"])) {
+    $brukernavn = $_POST["brukernavn"];
+    $epost = $_POST["epost"];
+    $elevId = $_POST["elevId"];
+    $passord = $_POST["passord"];
+    $passordnr2 = $_POST["passord2"];
+
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "im_db_testbase";
+      
+    // Create connection
+    $conn = mysqli_connect($servername, $username, $password, $database);
+      
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+                
+    $sql = "INSERT INTO `users`(`ElevID`, `Bruker`, `KryptertBruker`, `Email`, `Passord`) VALUES ('" . $elevId . "', '" . $brukernavn . "', '" . MD5($brukernavn) . "', '" . $epost . "', '" . MD5($passord) . "')";
+    $result = $conn->query($sql);
+
+    Redirect('user_created.php?user=' . MD5($brukernavn), false);
+}
+```
+
+### Oppgave 11 med annet språk:
+Koden er fra et prosjekt jeg lagde på slutten av 1. klasse og er skrevet i PHP
+```php
+if (mysqli_num_rows($result) > 0) {
+    $row = $result->fetch_assoc();
+                    
+    if(MD5($passord) == $row["Passord"]) {
+        $sql = "DELETE FROM `users` WHERE KryptertBruker = '" . $username2 . "'";
+        $delete = $conn->query($sql);
+        Redirect('user_deleted.php', false);
     } else {
         echo "<h2>Feil passord</h2>";
     }
