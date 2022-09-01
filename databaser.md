@@ -144,3 +144,47 @@ con.connect(function(err) {
   });
 });
 ```
+
+### oppgave 10 i NodeJs
+```js
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "dromtorp"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+  var sql = "INSERT INTO elev (ElevID, Fornavn, Etternavn, Klasse, Hobby, Kjonn, Datamaskin) VALUES (NULL, 'Peder', 'Petterson', '2', 'Gaming', 'J', '2')";
+  con.query(sql, function (err, result) {
+    if (err) throw err;
+    console.log("ny elev");
+  });
+});
+```
+
+### oppgave 11 i NodeJs
+```js
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "dromtorp"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+  var sql = "DELETE FROM `elev` WHERE Fornavn = 'Peder'";
+  con.query(sql, function (err, result) {
+    if (err) throw err;
+    console.log("user deleted");
+  });
+});
+```
