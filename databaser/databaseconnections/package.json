@@ -12,6 +12,7 @@
   "author": "me",
   "license": "CC0-1.0",
   "dependencies": {
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "prompt-sync": "^4.2.0"
   }
 }
