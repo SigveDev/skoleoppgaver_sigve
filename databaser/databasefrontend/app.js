@@ -8,6 +8,10 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/index.html'));
 });
 
+app.get('/DVGS.jpg', function(req, res) {
+    res.sendFile(path.join(__dirname, '/DVGS.jpg'));
+  });
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
