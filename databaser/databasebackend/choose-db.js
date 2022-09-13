@@ -10,16 +10,19 @@ const con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) throw err;
-  console.log("Connected!");
+  console.log("Connected!, but code not finished!!!");
 
     var option = prompt("What do you want? (insert, delete, update)");
 
     if (option = "insert") {
-        var sql = "INSERT INTO elev (ElevID, Fornavn, Etternavn, Klasse, Hobby, Kjonn, Datamaskin) VALUES (NULL, 'Peder', 'Petterson', '2', 'Gaming', 'J', '2')";
+      var sql = "INSERT INTO elev (ElevID, Fornavn, Etternavn, Klasse, Hobby, Kjonn, Datamaskin) VALUES (NULL, 'Peder', 'Petterson', '2', 'Gaming', 'J', '2')";
     } else if (option = "delete") {
-        var sql = "DELETE FROM `elev` WHERE Fornavn = 'Peder'";
+      var sql = "DELETE FROM `elev` WHERE Fornavn = 'Peder'";
     } else if (option = "update") {
-        var sql = "UPDATE `elev` SET Hobby = 'ny hobby' WHERE Fornavn = 'Lise'";
+      var sql = "UPDATE `elev` SET Hobby = 'ny hobby' WHERE Fornavn = 'Lise'";
+    } else {
+      console.log("Try again");
+      var sql = "";
     }
     
 
