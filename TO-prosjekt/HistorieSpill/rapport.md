@@ -12,20 +12,19 @@ Han var interessert i spill og kunne mye om de ulike krigene fra 1900-tallet fre
 
 #### Hva er Spillet?
 
-Spillet skal være et 2D spill hvor man kontrolerer et land under ulike kriger og må kontrolere troppene, som krever en del matte. Spillet vil være mye geografi og historie involvert med hendelser tatt så mye som mulig fra virkelige hendelser.
+Spillet skal være et 2D spill hvor man skal plasere land på et blankt kart over verden og får en poeng sum ut ifra hvor nærme de var.
 
 Spillet vil inneholde:
 - Kart over verden
-- virkelige hendelser og kriger
-- bruker kan endre hendelser
-- kontrolere tropper
+- geografi
+- poeng
 - strategi
 
 ## Fremgangsmøte
 
-#### Database
+#### info
 
-Skal lage et 2D spill i unity hvor man spiller som et land og får mer poeng av å fordele troppene sine strategisk og vinne, brukeren vil få mest poeng av å spille så likt som i virkeligheten som mulig.
+Skal lage et 2D spill i unity hvor man skal plasere et land på et blankt kart ut ifra minne.
 
 #### Unity 2D og C#
 
