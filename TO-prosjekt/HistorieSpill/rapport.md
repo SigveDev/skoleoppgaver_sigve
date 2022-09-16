@@ -12,13 +12,12 @@ Han var interessert i spill og kunne mye om de ulike krigene fra 1900-tallet fre
 
 #### Hva er Spillet?
 
-Spillet skal være et 2D spill hvor man skal plasere land på et blankt kart over verden og får en poeng sum ut ifra hvor nærme de var.
+Spillet skal være et 2D spill hvor man skal plasere land på et blankt kart over verden og får poeng når de gjetter riktig, og kan få en feil før de må gå videre.
 
 Spillet vil inneholde:
 - Kart over verden
 - geografi
 - poeng
-- strategi
 
 ## Fremgangsmøte
 
