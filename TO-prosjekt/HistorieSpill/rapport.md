@@ -19,6 +19,10 @@ Spillet vil inneholde:
 - geografi
 - poeng
 
+### Exempel bilder:
+
+![example image with color](example-map-color.png)
+
 ![examle image](example-map.png)
 
 ## Fremgangsmøte
