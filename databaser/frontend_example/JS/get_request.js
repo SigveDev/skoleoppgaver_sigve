@@ -5,7 +5,7 @@ function updateRequest() {
     console.log(fornavn);
     console.log(hobby);
 
-    fetch('http://localhost:3000/' + fornavn)
+    fetch('http://localhost:3000/' + fornavn) //fortsett her Sigve!!!
         .then((response) => response.json())
         .then((data) => console.log(data));
 }
