@@ -29,3 +29,26 @@ input[type=text], select {
     padding: 20px;
     align-items: center;
   }
+
+  #getTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #getTable td, #GetTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #getTable tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #getTable tr:hover {background-color: #ddd;}
+  
+  #getTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }

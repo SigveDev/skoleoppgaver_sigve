@@ -26,7 +26,7 @@ app.use(cors())
       });
 })*/
 
-app.get('/:id', function(req, res){
+app.get('/:id/:func', function(req, res){
   const con = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -39,12 +39,24 @@ app.get('/:id', function(req, res){
     console.log("Connected!");
 
     var getID = req.params.id;
+    var getFunction = req.params.func;
     console.log(getID);
-    var sql = "SELECT * FROM `elev` WHERE Fornavn = '" + getID + "'";
+    console.log(getFunction);
+
+    if (getFunction == 'delete') {
+      var sql = "DELETE FROM `elev` WHERE Fornavn = '" + getID + "'";
+    } else if (getFunction == 'change') {
+      var sql = "UPDATE `elev` SET Hobby = 'ny hobby' WHERE Fornavn = '" + getID  + "'";
+    } else if (getFunction == 'get') {
+      var sql = "SELECT * FROM `elev` WHERE Fornavn = '" + getID + "'";
+    } else {
+      var sql = "none";
+    }
+
     con.query(sql, function (err, result) {
       if (err) throw err;
       console.log(result);
-      res.send(result)
+      res.send(result);
     });
   });
 });
