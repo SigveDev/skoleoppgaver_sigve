@@ -35,7 +35,7 @@ Skal lage et 2D spill i unity hvor man skal plasere et land på et blankt kart u
 
 - Spillet trenger en start side hvor du kan se tider og en start knapp.
 - Spillet skal se simpelt ut men fortsatt se bra ut med et minimalistik kart.
-- Når man gjetter riktig land får man en poeng sum og får et nytt land man må plasere riktig.
+- Når man gjetter riktig land/verdensdel får man en poeng sum og får et nytt land man må plasere riktig.
 - Det vil også være en timer så man kan se hvor lang tid man bruker.
 
 Dette er så langt jeg har kommet nå, mer vil komme senere.
