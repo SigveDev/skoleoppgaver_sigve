@@ -1,0 +1,32 @@
+#main {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    background-color: #40444b;
+    min-height: 100vh;
+}
+
+#mid {
+    display: flex;
+    width: 80%;
+    border-radius: 15px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #2f3136;
+    color: white;
+}
+
+.codeSnippet {
+    height: fit-content;
+    width: 50%;
+    text-align: start;
+    background-color: #202225;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+}
