@@ -100,14 +100,11 @@
                 Vi lager en funsjon som regner ut arealet av sidene og logger det i console.
             </p><br>
             <div class="codeSnippet">
-                function kvadrat(){<br>
-                &emsp;let areal = 8 * 8;<br>
+                function kvadrat(lende, bredde){<br>
+                &emsp;let areal = lende * bredde;<br>
                 &emsp;console.log(areal);<br>
                 }
             </div>
-            <p>
-                Output:<br><br>64
-            </p>
             <br>
             <h3>
                 Oppgave 2b:
@@ -116,19 +113,78 @@
                 Vi lager en funsjon som regner ut en trkant med høyde 8 og lengde 8 og logger det i console.
             </p><br>
             <div class="codeSnippet">
-                function trekant(){<br>
-                &emsp;let areal = (8 * 8) / 2;<br>
+                function trekant(lengde, bredde){<br>
+                &emsp;let areal = (lende * bredde) / 2;<br>
                 &emsp;console.log(areal);<br>
                 }
             </div>
-            <p>
-                Output:<br><br>32
-            </p>
             <br>
             <h3>
                 Oppgave 2c:
             </h3>
-            
+            <p>
+                Vi lager en funsjon som kaller på de andre funsjonene og sender inn lende og bredde.
+            </p>
+            <div class="codeSnippet">
+                function areal(lengde, bredde){<br>
+                &emsp;kvadrat(lengde, bredde);<br>
+                &emsp;trekant(lengde, bredde);<br>
+                }
+            </div>
+            <br><br>
+            <h2>
+                Oppgave 3:
+            </h2>
+            <form action="Javascript:spraak()">
+                <input type="text" id="input"><br><br>
+                <input type="submit" id="submit">
+            </form>
+            <br>
+            <p id="output">
+
+            </p>
+            <h3>
+                Oppgave 3a:
+            </h3>
+            <p>
+                Input taggen er en metode for en bruker å endre/sende inn data til en nettside og innenfor input taggen finnes det flere typer som text, date og submit.<br>
+                Text typen lar bruker skrive inn all slags type text.<br>
+                Date typen lar bruker skrive/legge inn en dato.<br>
+                Submit typen lar en bruker submite/sende inn et form med andre inputs som text.
+            </p>
+            <h3>
+                Oppgave 3b:
+            </h3>
+            <p>
+                Det er en liten demo på starten av oppgave 3.
+            </p>
+            <p>
+                HTML:
+            </p>
+            <div class="codeSnippet">
+                &lt;form action="Javascript:spraak()"&gt;<br>
+                &emsp;&lt;input type="text" id="input"&gt;&lt;br&gt;&lt;br&gt;<br>
+                &emsp;&lt;input type="submit" id="submit"&gt;<br>
+                &lt;/form&gt;
+            </div>
+            <br>
+            <p>
+                JS:
+            </p>
+            <div class="codeSnippet">
+                function spraak(){<br>
+                &emsp;let lang = document.getElementById("input").value;<br>
+                &emsp;if (lang == "n"){<br>
+                &emsp;&emsp;document.getElementById("output").innerHTML = "Du er Norsk";<br>
+                &emsp;} else if (lang == "s"){<br>
+                &emsp;&emsp;document.getElementById("output").innerHTML = "Du er Svansk";<br>
+                &emsp;} else if (lang == "d"){<br>
+                &emsp;&emsp;document.getElementById("output").innerHTML = "Du er Dansk";<br>
+                &emsp;} else {<br>
+                &emsp;&emsp;document.getElementById("output").innerHTML = "Skriv inn n for Norge, s for Sverige eller d for Danmark";<br>
+                &emsp;}<br>
+                }
+            </div>
         </div>
     </div>
 </body>
