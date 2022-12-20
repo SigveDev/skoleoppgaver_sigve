@@ -1,3 +1,7 @@
+body, html {
+    overflow-x: hidden;
+}
+
 #main {
     display: flex;
     width: 100vw;
@@ -31,7 +35,7 @@
     padding-left: 1rem;
 }
 
-#input {
+.textStyle {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -41,7 +45,7 @@
     box-sizing: border-box;
 }
 
-#submit {
+.submitStyle {
     width: 100%;
     background-color: #5865F2;
     color: white;
@@ -52,6 +56,6 @@
     cursor: pointer;
 }
 
-#submit:hover {
+.submitStyle:hover {
     background-color: #4450d6;
 }

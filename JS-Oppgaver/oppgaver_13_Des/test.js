@@ -25,3 +25,21 @@ function spraak(){
         document.getElementById("output").innerHTML = "Skriv inn n for Norge, s for Sverige eller d for Danmark";
     }
 }
+
+var randome;
+
+function oppgave4(){
+    randome = Math.floor(Math.random() * 51);
+    console.log(randome);
+}
+
+function gjett(){
+    var gjettet = document.getElementById("input3").value;
+    if(gjettet == randome){
+        document.getElementById("gjettSvar").innerHTML = "Riktig, svaret var: " + randome;
+    } else if (gjettet > randome) {
+        document.getElementById("gjettSvar").innerHTML = "For høyt";
+    } else if (gjettet < randome) {
+        document.getElementById("gjettSvar").innerHTML = "For lavt";
+    }
+}
