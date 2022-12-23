@@ -4,7 +4,7 @@ a, h1, h2, h3, h4, h5, p {
 
 .background-gradient {
     display: flex;
-    background: linear-gradient(130deg, #235f90, #a11ea8, #235f90);
+    background: linear-gradient(180deg, #235f90, #a11ea8, #235f90);
     background-size: 600% 600%;
 
     animation: AnimationName 27s ease infinite;
@@ -73,4 +73,23 @@ h1 {
 
 .button:hover {
     background-color: #767fe9;
+}
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+    
+    #oppgaver {
+        flex-direction: column;
+    }
+
+    #languages {
+        flex-direction: column;
+        height: 250px;
+    }
 }
