@@ -3,19 +3,20 @@ a, h1, h2, h3, h4, h5, p {
 }
 
 .background-gradient {
-    background: linear-gradient(236deg, #235f90, #a11ea8, #235f90);
+    display: flex;
+    background: linear-gradient(130deg, #235f90, #a11ea8, #235f90);
     background-size: 600% 600%;
 
-    animation: AnimationName 43s ease infinite;
-    
+    animation: AnimationName 27s ease infinite;
+
     justify-content: center;
     align-items: center;
 }
 
 @keyframes AnimationName {
-    0%{background-position:0% 51%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 51%}
+    0%{background-position:51% 0%}
+    50%{background-position:50% 100%}
+    100%{background-position:51% 0%}
 }
 
 #content {
