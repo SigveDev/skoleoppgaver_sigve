@@ -15,13 +15,22 @@ class Sirkel {
     finnOmkrets() {
         return (this.diameter * Math.PI);
     }
+
+    finnAreal() {
+        return (Math.PI * this.radius * this.radius);
+    }
 }
 
 //lager instans av klassen
 let ita2 = new Klassenavn("Informasjonsteknnologi", "vg2");
 
-let minSirkel = new Sirkel(3);
+function sirkel() {
+    let minSirkel = new Sirkel(document.getElementById("radiusSirkel").value);
 
-let omkrets_av_sirkel = minSirkel.finnOmkrets();
+    let omkrets_av_sirkel = minSirkel.finnOmkrets();
 
-console.log(omkrets_av_sirkel.toFixed(2));
+    let areal_av_sirkel = minSirkel.finnAreal();
+
+    console.log(omkrets_av_sirkel.toFixed(2));
+    console.log(areal_av_sirkel.toFixed(2));
+}
