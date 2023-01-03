@@ -4,16 +4,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>objektorientert programering</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body style="background-color: black; color: white;">
     <center>
-    <h2>objektorientert programering</h2>
+    <h1>objektorientert programering</h1>
     
     <form action="Javascript:sirkel()">
         <label for="radiusSirkel">Radius på Sirkel:</label><br>
         <input type="number" id="radiusSirkel"><br><br>
         <input type="submit" value="calculate">
     </form>
+    <form action="Javascript:sylinder()">
+        <label for="radiusSylinder">Radius på Sylinder:</label><br>
+        <input type="number" id="radiusSylinder"><br>
+        <label for="heightSylinder">Høyde på Sylinder:</label><br>
+        <input type="number" id="heightSylinder"><br><br>
+        <input type="submit" value="calculate">
+    </form>
+    <br><br>
+    <form action="Javascript:navnOgAlder()">
+        <label for="name">Navn:</label><br>
+        <input type="text" id="name"><br>
+        <label for="PreAge">Fødselsår:</label><br>
+        <input type="number" id="PreAge"><br><br>
+        <input type="submit" value="submit">
+    </form>
+    <p id="output_nameAndAge"></p>
+    <p id="output_nameAndAge2"></p>
     </center>
 </body>
 <script src="myscript.js"></script>
