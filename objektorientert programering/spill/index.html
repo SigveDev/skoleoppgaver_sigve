@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objectorientert Spill :)</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body class="background-gradient">
+    <div id="content">
+        <h1>Game</h1>
+        <div id="customCharacter">
+            <h2>Create Custom Character:</h2>
+            <form action="Javascript:CharacterCustom()">
+                <label for="brukernavn">Character name:</label><br>
+                <input type="text" id="brukernavn" autocomplete="off"><br>
+                <label for="klasse">Gameclass:</label><br>
+                <select name="klasse" id="klasse">
+                    <option value="melee">Melee</option>
+                    <option value="range">Range</option>
+                    <option value="magic">Magic</option>
+                </select><br>
+                <label for="kjonn">Gander:</label><br>
+                <select name="kjonn" id="kjonn">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select><br>
+                <label for="vapen">Weapon:</label><br>
+                <select name="vapen" id="vapen">
+                    <option value="shortSword">Shortsword x2 (Melee Only)</option>
+                    <option value="longSword">Longsword (Melee Only)</option>
+                    <option value="bow">Bow (Range Only)</option>
+                    <option value="crossBow">Crossbow (Range Only)</option>
+                    <option value="wand">Wand (Magic Only)</option>
+                    <option value="staff">Staff (Magic Only)</option>
+                </select><br><br>
+                <input type="submit" value="Start your Adventure"  class="button">
+            </form>
+        </div>
+        <div id="gameMenu" style="display: none;">
+            <h2>Character Stats:</h2>
+            <h3>Name:</h3>
+            <p id="nameOutput"></p>
+            <h3>Gameclass:</h3>
+            <p id="classOutput"></p>
+            <h3>Gender:</h3>
+            <p id="genderOutput"></p>
+            <h3>Health:</h3>
+            <p id="healthOutput"></p>
+        </div>
+    </div>
+</body>
+<script src="JS/script.js"></script>
+</html>
