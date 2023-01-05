@@ -6,33 +6,61 @@
     <title>objektorientert programering</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: black; color: white;">
-    <center>
-    <h1>objektorientert programering</h1>
-    
-    <form action="Javascript:sirkel()">
-        <label for="radiusSirkel">Radius på Sirkel:</label><br>
-        <input type="number" id="radiusSirkel"><br><br>
-        <input type="submit" value="calculate">
-    </form>
-    <form action="Javascript:sylinder()">
-        <label for="radiusSylinder">Radius på Sylinder:</label><br>
-        <input type="number" id="radiusSylinder"><br>
-        <label for="heightSylinder">Høyde på Sylinder:</label><br>
-        <input type="number" id="heightSylinder"><br><br>
-        <input type="submit" value="calculate">
-    </form>
-    <br><br>
-    <form action="Javascript:navnOgAlder()">
-        <label for="name">Navn:</label><br>
-        <input type="text" id="name"><br>
-        <label for="PreAge">Fødselsår:</label><br>
-        <input type="number" id="PreAge"><br><br>
-        <input type="submit" value="submit">
-    </form>
-    <p id="output_nameAndAge"></p>
-    <p id="output_nameAndAge2"></p>
-    </center>
+<body class="background-gradient">
+    <div id="content">
+        <center>
+            <h1>objektorientert programering</h1>
+            
+            <!--<h2>Sirkel:</h2>
+            <form action="Javascript:sirkel()">
+                <label for="radiusSirkel">Radius på Sirkel:</label><br>
+                <input type="number" id="radiusSirkel"><br><br>
+                <input type="submit" value="calculate">
+            </form>
+            <br>
+            <h2>Sylinder:</h2>
+            <form action="Javascript:sylinder()">
+                <label for="radiusSylinder">Radius på Sylinder:</label><br>
+                <input type="number" id="radiusSylinder"><br>
+                <label for="heightSylinder">Høyde på Sylinder:</label><br>
+                <input type="number" id="heightSylinder"><br><br>
+                <input type="submit" value="calculate">
+            </form>
+            <br>-->
+            <h2>Navn og Alder:</h2>
+            <form action="Javascript:navnOgAlder()">
+                <label for="name">Navn:</label><br>
+                <input type="text" id="name"><br>
+                <label for="PreAge">Fødselsår:</label><br>
+                <input type="number" id="PreAge"><br><br>
+                <input type="submit" value="submit" class="button">
+            </form>
+            <p id="output_nameAndAge"></p>
+            <p id="output_nameAndAge2"></p>
+            <br>
+            <h2>Rektangel:</h2>
+            <form action="Javascript:rektangel()">
+                <label for="lengthRektangel">Høyde/lengde:</label><br>
+                <input type="number" id="lengthRektangel"><br>
+                <label for="widthRektangel">Bredde:</label><br>
+                <input type="number" id="widthRektangel"><br><br>
+                <input type="submit" value="calculate" class="button">
+            </form>
+            <p id="output_rektangel"></p>
+            <br>
+            <h2>Rektangel Størrelse:</h2>
+            <form action="Javascript:rektangelSize()">
+                <label for="lengthRektangel2">Høyde/lengde:</label><br>
+                <input type="number" id="lengthRektangel2"><br>
+                <label for="widthRektangel2">Bredde:</label><br>
+                <input type="number" id="widthRektangel2"><br>
+                <label for="sizeRektangel2">Hvor mange ganger så stor:</label><br>
+                <input type="number" id="sizeRektangel2"><br><br>
+                <input type="submit" value="calculate" class="button">
+            </form>
+            <p id="output_rektangel2"></p>
+        </center>
+    </div>
 </body>
 <script src="myscript.js"></script>
 </html>
