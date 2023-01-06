@@ -20,10 +20,11 @@
                     <option value="range">Range</option>
                     <option value="magic">Magic</option>
                 </select><br>
-                <label for="kjonn">Gander:</label><br>
+                <label for="kjonn">Gender:</label><br>
                 <select name="kjonn" id="kjonn">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
+                    <option value="chopper">Helikopter Helikopter</option>
                 </select><br>
                 <label for="vapen">Weapon:</label><br>
                 <select name="vapen" id="vapen">
@@ -34,8 +35,8 @@
                     <option value="wand">Wand (Magic Only)</option>
                     <option value="staff">Staff (Magic Only)</option>
                 </select><br><br>
-                <input type="submit" value="Start your Adventure"  class="button">
                 <p id="characterCreatorErr"></p>
+                <input type="submit" value="Start your Adventure"  class="button">
             </form>
         </div>
         <div id="gameMenu" style="display: none;">
@@ -48,10 +49,18 @@
             <p id="genderOutput"></p>
             <h3>Health:</h3>
             <p id="healthOutput"></p>
-        </div>
-        <div id="inventory">
-            <h2>Inventory:</h2>
-            <p id="inventoryList"></p>
+            <div class="buttonLayout">
+                <a href="gameView/index.html" onclick="Javascript:StartGame()">
+                    <button class="button2">
+                        Start Game
+                    </button>
+                </a>
+                <a href="./index.html">
+                    <button class="button2Accent">
+                        Back
+                    </button>
+                </a>
+            </div>
         </div>
     </div>
 </body>
