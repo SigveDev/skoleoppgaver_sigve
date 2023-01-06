@@ -33,15 +33,27 @@ class Character {
 let characterInfo;
 
 function CharacterCustom() {
-    characterInfo = new Character(document.getElementById("brukernavn").value, document.getElementById("klasse").value, document.getElementById("kjonn").value, document.getElementById("vapen").value);
-    console.log(characterInfo);
-    document.getElementById("customCharacter").style.display = "none";
-    document.getElementById("gameMenu").style.display = "flex";
-    characterInfo.setHealth();
-    console.log(characterInfo.health);
+    if(document.getElementById("klasse").value == "melee") {
+        if(document.getElementById("vapen").value == "shortSword" || document.getElementById("vapen").value == "longSword") {
+            canRunn = true;
+        } else {
+            canRunn = true;
+            document.getElementById("characterCreatorErr").innerHTML = "As an melee class character, you cant use that weapon";
+            canRunn = false;
+        }
+    }
 
-    document.getElementById("nameOutput").innerHTML = characterInfo.name;
-    document.getElementById("classOutput").innerHTML = characterInfo.gameClass;
-    document.getElementById("genderOutput").innerHTML = characterInfo.gender;
-    document.getElementById("healthOutput").innerHTML = characterInfo.health;
+    if(canRunn) {
+        characterInfo = new Character(document.getElementById("brukernavn").value, document.getElementById("klasse").value, document.getElementById("kjonn").value, document.getElementById("vapen").value);
+        console.log(characterInfo);
+        document.getElementById("customCharacter").style.display = "none";
+        document.getElementById("gameMenu").style.display = "flex";
+        characterInfo.setHealth();
+        console.log(characterInfo.health);
+
+        document.getElementById("nameOutput").innerHTML = characterInfo.name;
+        document.getElementById("classOutput").innerHTML = characterInfo.gameClass;
+        document.getElementById("genderOutput").innerHTML = characterInfo.gender;
+        document.getElementById("healthOutput").innerHTML = characterInfo.health;
+    }
 }

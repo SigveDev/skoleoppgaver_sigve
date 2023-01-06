@@ -4,19 +4,15 @@ a, h1, h2, h3, h4, h5, p {
 
 .background-gradient {
     display: flex;
-    background: linear-gradient(180deg, #235f90, #a11ea8, #235f90);
-    background-size: 600% 600%;
-
-    animation: AnimationName 27s ease infinite;
-
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    animation: animateBg 27s linear infinite;
+    background-image: linear-gradient(125deg,#d232bd,#418ade,#d232bd,#418ade);
+    background-size: 300% 100%;
 }
-
-@keyframes AnimationName {
-    0%{background-position:51% 0%}
-    50%{background-position:50% 100%}
-    100%{background-position:51% 0%}
+@keyframes animateBg {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; }
 }
 
 #content {
