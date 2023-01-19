@@ -137,7 +137,8 @@ class Joker{
     }
 }
 
-let jokerGame;
+let jokerGame = new Joker("Sigve");
+jokerGame.startGame();
 
 document.getElementById("startButton").onclick = (e) => {
     jokerGame = new Joker("Sigve");
