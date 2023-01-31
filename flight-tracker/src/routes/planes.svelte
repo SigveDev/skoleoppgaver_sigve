@@ -14,14 +14,14 @@
         document.getElementById("flight").innerHTML = "<h2>Loading...</h2>"
 
         currentCountry = document.getElementById("search").value;
-        const responseFetch = await fetch('https://airlabs.co/api/v9/flights?airline_iata=' + currentCountry + '&api_key=2286bb14-3743-45fd-8967-45e2adb899c4');
+        const responseFetch = await fetch('https://airlabs.co/api/v9/airports?airline_iata=' + currentCountry + '&api_key=2286bb14-3743-45fd-8967-45e2adb899c4');
         console.log("fetch successfull");
         const flight = await responseFetch.json();
 
         flightOutside = flight;
         console.log(flightOutside);
         document.getElementById("flight").innerHTML = `<h3>Flights found: ` + flightOutside.response.length + `</h3>`;
-        for (let i = 0; i < flightOutside.response.length; i++) {
+        for (let i = 0; i < 50; i++) {
             document.getElementById("flight").innerHTML += `
             <div class="flightElem">
                 <div class="imageContainter">
@@ -42,7 +42,7 @@
     }
 
     onMount(async () => {
-        fetchData();
+        //fetchData();
     });
 </script>
 
