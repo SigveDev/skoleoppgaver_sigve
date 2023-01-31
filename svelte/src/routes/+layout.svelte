@@ -1,0 +1,18 @@
+<script>
+	import './styles.css';
+</script>
+
+<div class="app">
+	<slot />
+</div>
+
+<style>
+	.app {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		justify-content: center;
+		align-items: center;
+		width: fit-content;
+	}
+</style>
