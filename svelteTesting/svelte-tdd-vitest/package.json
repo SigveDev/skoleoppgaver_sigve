@@ -1,0 +1,20 @@
+{
+  "name": "svelte-tdd-vitest",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    	"coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.0.2",
+    "jsdom": "^21.1.0",
+    "svelte": "^3.55.1",
+    "vite": "^4.1.0",
+    "vitest": "^0.28.4"
+  }
+}
