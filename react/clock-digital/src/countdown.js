@@ -30,7 +30,7 @@ function Countdown() {
     <div className="counter">
       Countdown: {countdown.toLocaleString()}<br />
       {isExploding && <ConfettiExplosion />}
-      <button onClick={() => {setCountdown(10); firstFunc()}}>Start timer</button>
+      <button onClick={() => {setCountdown(10); firstFunc()}}>Start timer (10sek)</button>
     </div>
   );
 }
