@@ -3,6 +3,11 @@ import Google from '../img/google.png';
 import background from "../img/background.png";
 
 function Login() {
+
+    const google = ()=>{
+        window.open("http://armadillo.pink:25568", "_self");
+    }
+
     return (
         <div className="login">
             <div className="loginBox">
@@ -11,7 +16,7 @@ function Login() {
                 </div>
                 <div className="loginMethods">
                     <h1 className="loginText">Log in methods:</h1>
-                    <div className="loginbutton google">
+                    <div className="loginbutton google" onClick={google}>
                         <img src={Google} alt="google" className="icon" />
                         Google
                     </div>
