@@ -40,4 +40,6 @@ function Loading() {
   );
 }
 
+export const userInfo = Loading.user;
+
 export default Loading;
