@@ -1,6 +1,7 @@
 import './App.css';
 import Login from './pages/login';
 import Home from './pages/home';
+import Loading from './pages/loading';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 

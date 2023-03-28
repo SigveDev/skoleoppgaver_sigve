@@ -1,7 +1,6 @@
 import '../App.css';
 import './loading.css';
 import background from "../img/background-gray.png";
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 function Login() {
