@@ -10,8 +10,8 @@ function App({user}) {
     <BrowserRouter>
     <div className="App">
       <Routes>
-        <Route path="/" element={user ? <Home user={user} /> : <Navigate to="/login" />} />
-        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+        <Route path="/" element={Loading.user ? <Home user={Loading.user} /> : <Navigate to="/login" />} />
+        <Route path="/login" element={Loading.user ? <Navigate to="/" /> : <Login />} />
         <Route path="*" element={<Loading />} />
       </Routes>
     </div>
