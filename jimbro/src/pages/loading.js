@@ -27,7 +27,6 @@ function Login() {
     };
     getUser();
   }, []);
-  console.log(user);
 
   if(user) {
     window.open("https://jimbro.fyi", "_self");
@@ -40,5 +39,7 @@ function Login() {
       </div>
   );
 }
+
+export const userInfo = user;
 
 export default Login;
