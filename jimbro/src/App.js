@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [user,setUser] = useState(null);
+  /*const [user,setUser] = useState(null);
 
   useEffect(()=>{
     const getUser = ()=>{
@@ -27,7 +27,7 @@ function App() {
       });
     };
     getUser();
-  },[])
+  },[])*/
 
   return (
     <BrowserRouter>
