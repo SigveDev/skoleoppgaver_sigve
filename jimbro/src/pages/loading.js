@@ -3,7 +3,7 @@ import './loading.css';
 import background from "../img/background-gray.png";
 import { useEffect, useState } from 'react';
 
-export function Loading() {
+function Loading() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -40,4 +40,4 @@ export function Loading() {
   );
 }
 
-export const userInfo = Loading.user;
+export default Loading;

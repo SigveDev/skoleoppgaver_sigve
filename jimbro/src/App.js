@@ -1,7 +1,7 @@
 import './App.css';
 import Login from './pages/login';
 import Home from './pages/home';
-import { Loading, userInfo } from './pages/loading';
+import Loading from './pages/loading';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
