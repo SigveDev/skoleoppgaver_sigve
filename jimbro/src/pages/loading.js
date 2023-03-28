@@ -4,7 +4,7 @@ import background from "../img/background-gray.png";
 import { Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-function Login({user}) {
+function Login() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
