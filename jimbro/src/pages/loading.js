@@ -3,7 +3,7 @@ import './loading.css';
 import background from "../img/background-gray.png";
 import { useEffect, useState } from 'react';
 
-function Login() {
+function Loading() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -40,6 +40,4 @@ function Login() {
   );
 }
 
-export const userInfo = user;
-
-export default Login;
+export default Loading;
