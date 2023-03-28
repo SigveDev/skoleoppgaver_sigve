@@ -31,7 +31,7 @@ function Login() {
   console.log(user);
 
   if(user) {
-    <Navigate to="/" user={user}/>
+    window.open("https://jimbro.fyi", "_self");
   }
   
   return (
