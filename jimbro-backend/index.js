@@ -5,6 +5,17 @@ const passpoerSetup = require('./passport')
 const cors = require('cors');
 const authRoute = require("./routes/auth");
 const app = express();
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    })
+    .then(console.log("Connectet to mongoDB"))
+    .catch((err) => console.log(err));
 
 app.use(cookieSession(
     {
@@ -19,7 +30,7 @@ app.use(passport.session());
 
 app.use(
     cors({
-        origin: "https://localhost:3000",
+        origin: "https://jimbro.fyi",
         methods: "GET,POST,PUT,DELETE",
         credentials: true
     })
@@ -27,6 +38,6 @@ app.use(
 
 app.use("/auth", authRoute);
 
-app.listen("5000", ()=>{
-    console.log("server is running");
+app.listen("25568", ()=>{
+    console.log("Server is running on port 25568!");
 })

@@ -1,11 +1,11 @@
 import '../App.css';
 import Google from '../img/google.png';
-import background from "../img/background.png";
+import background from "../img/background-gray.png";
 
 function Login() {
 
     const google = ()=>{
-        window.open("http://armadillo.pink:25568", "_self");
+        window.open("https://api.jimbro.fyi/auth/google", "_self");
     }
 
     return (
@@ -22,7 +22,7 @@ function Login() {
                     </div>
                 </div>
             </div>
-            <img src={background} className="backgroundImage" />
+            <img src={background} className="backgroundImage" alt="background" />
         </div>
     );
 }

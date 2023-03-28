@@ -1,13 +1,18 @@
 import "../App.css";
-import pfp from "../img/meg2.png";
-import background from "../img/background.png";
+import background from "../img/background-gray.png";
 
-function Home() {
+const Home = ({user}) => {
+
+    const logout = () => {
+        window.open("https://api.jimbro.fyi/auth/logout", "_self");
+    };
+
     return (
         <div className="home">
             <div className="userName">
-                <img src={pfp} alt="user pfp" className="userPFP"></img>
-                <h1 className="name">Sigve Tomten</h1>
+                <img src={user.photos[0].value} alt="user pfp" className="userPFP"></img>
+                <h1 className="name">{user.displayName}</h1>
+                <h2 className="logout" onClick={logout}>Logout</h2>
             </div>
             <div className="content">
                 <div className="pr">
@@ -29,7 +34,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <img src={background} className="backgroundImage" />
+            <img src={background} className="backgroundImage" alt="background" />
         </div>
     );
 }
