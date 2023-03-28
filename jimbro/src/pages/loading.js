@@ -28,9 +28,10 @@ function Login() {
     };
     getUser();
   }, []);
+  console.log(user);
 
   if(user) {
-    <Navigate to="/" user="user"/>
+    <Navigate to="/" user={user}/>
   }
   
   return (
