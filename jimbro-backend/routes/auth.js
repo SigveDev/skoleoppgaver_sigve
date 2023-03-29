@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const passport = require('passport');
 
-const CLIENT_ID_LOGIN = "https://jimbro.fyi/loading";
-const CLIENT_ID_LOGOUT = "https://jimbro.fyi";
+const CLIENT_ID = "https://jimbro.fyi";
 
 router.get('/login/success', (req, res) => {
     if(req.user){
@@ -23,13 +22,13 @@ router.get('/login/failed', (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.logout();
-    res.redirect(CLIENT_ID_LOGOUT);
+    res.redirect(CLIENT_ID);
 })
 
 router.get('/google', passport.authenticate("google", {scope:["profile"]}));
 
 router.get('/google/callback', passport.authenticate("google",{
-    successRedirect: CLIENT_ID_LOGIN,
+    successRedirect: CLIENT_ID,
     failureRedirect: "/login/failed"
 }))
 
