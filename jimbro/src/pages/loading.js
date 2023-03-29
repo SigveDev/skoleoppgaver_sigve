@@ -1,11 +1,17 @@
 import '../App.css';
 import './loading.css';
 import background from "../img/background-gray.png";
-import FetchLogin from "../components/fetchLogin";
+import { FetchLogin } from "../components/fetchLogin";
+import { useEffect, useState } from 'react';
 
-function Loading(prop) {
+function Loading() {
+  const [user, setUser] = useState(null);
 
-  if(prop[1].user) {
+  useEffect(() => {
+    FetchLogin().then((data) => setUser(data));
+  }, []);
+
+  if(user) {
     window.open("https://jimbro.fyi", "_self");
   }
   
@@ -13,7 +19,6 @@ function Loading(prop) {
       <div className="loading">
           <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
           <img src={background} className="backgroundImage" alt="background" />
-          <FetchLogin />
       </div>
   );
 }

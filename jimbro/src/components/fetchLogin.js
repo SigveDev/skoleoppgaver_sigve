@@ -1,9 +1,5 @@
-import { useEffect, useState } from 'react';
+export async function FetchLogin() {
 
-function FetchLogin() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
     const getUser = ()=>{
       fetch("https://api.jimbro.fyi/auth/login/success", {
         method: "GET",
@@ -17,19 +13,12 @@ function FetchLogin() {
         if (response.status === 200) return response.json();
         throw new Error("authentication failed");
       }).then(resObject=>{
-        setUser(resObject.user);
+        return resObject.user;
       }).catch(err=>{
         console.log(err);
       });
     };
     getUser();
-  }, []);
-
-  console.log(user);
   
-  return (
-    <div>{user}</div>
-  );
+  return <div></div>;
 }
-
-export default FetchLogin;
