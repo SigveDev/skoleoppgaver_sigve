@@ -1,18 +1,20 @@
 const mongoose = require('mongoose');
 
-const PrSchema = new mongoose.Schema({
-    bench:{
+const PlanerSchema = new mongoose.Schema({
+    day:{
         type: String,
         required: true,
     },
-    deadlift:{
+    time:{
         type: String,
         required: true,
     },
-    squat:{
+    gym:{
         type: String,
-        required: true,
+    },
+    exerciseDay:{
+        type: String,
     },
 },{ timestamps: true });
 
-module.exports = mongoose.model('Pr', PrSchema);
+module.exports = mongoose.model('Planer', PlanerSchema);

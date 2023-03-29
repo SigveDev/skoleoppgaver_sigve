@@ -1,7 +1,7 @@
 const cookieSession = require('cookie-session');
 const express = require('express');
 const passport = require('passport');
-const passpoerSetup = require('./passport')
+const passportSetup = require('./passport')
 const cors = require('cors');
 const authRoute = require("./routes/auth");
 const app = express();
@@ -12,10 +12,13 @@ dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    })
-    .then(console.log("Connectet to mongoDB"))
-    .catch((err) => console.log(err));
+    useUnifiedTopology: true
+});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+});
 
 app.use(cookieSession(
     {
