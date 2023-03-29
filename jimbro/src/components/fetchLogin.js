@@ -19,6 +19,4 @@ export async function FetchLogin() {
       });
     };
     getUser();
-  
-  return <div></div>;
 }
