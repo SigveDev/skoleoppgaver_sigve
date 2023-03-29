@@ -27,7 +27,7 @@ function FetchLogin() {
   }, []);
   
   return (
-      <Loading user={user} />
+    <Loading user={user} />
   );
 }
 
