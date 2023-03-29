@@ -16,7 +16,7 @@ function App() {
           Accept: "application/json",
           "content-type": "application/json",
           "Access-Control-Allow-Credentials": true,
-          "access-control-allow-origin": "https://api.jimbro.fyi",
+          "access-control-allow-origin": "https://api.jimbro.fyi/login",
         },
       }).then(response=>{
         if (response.status === 200) return response.json();
