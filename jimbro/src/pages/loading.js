@@ -5,7 +5,7 @@ import FetchLogin from "../components/fetchLogin";
 
 function Loading(prop) {
 
-  if(prop.user) {
+  if(prop[1].user) {
     window.open("https://jimbro.fyi", "_self");
   }
   
