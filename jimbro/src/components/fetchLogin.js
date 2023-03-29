@@ -15,7 +15,7 @@ export async function FetchLogin() {
       }).then(resObject=>{
         return resObject.user;
       }).catch(err=>{
-        console.log(err);
+        return err;
       });
     };
     getUser();
