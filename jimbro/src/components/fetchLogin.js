@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Loading from '../pages/loading';
 
 function FetchLogin() {
   const [user, setUser] = useState(null);
@@ -29,7 +28,7 @@ function FetchLogin() {
   console.log(user);
   
   return (
-    <Loading user={user} />
+    <div>{user}</div>
   );
 }
 
