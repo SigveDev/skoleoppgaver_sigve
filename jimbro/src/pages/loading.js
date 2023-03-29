@@ -11,8 +11,6 @@ function Loading() {
     FetchLogin().then((data) => setUser(data));
   }, []);
 
-  console.log(user);
-
   if(user) {
     window.open("https://jimbro.fyi", "_self");
   }

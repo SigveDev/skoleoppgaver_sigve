@@ -13,6 +13,8 @@ function App() {
     FetchLogin().then((data) => setUser(data));
   }, []);
 
+  console.log(user);
+
   return (
     <BrowserRouter>
     <div className="App">
