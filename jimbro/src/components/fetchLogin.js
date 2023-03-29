@@ -1,27 +1,34 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Loading from '../pages/loading';
 
-export default function fetchLogin() {
-    const [user, setUser] = useState(null);
+function FetchLogin() {
+  const [user, setUser] = useState(null);
 
+  useEffect(() => {
     const getUser = ()=>{
-        fetch("https://api.jimbro.fyi/auth/login/success", {
-          method: "GET",
-          credentials: "include",
-          headers: {
-            Accept: "application/json",
-            "content-type": "application/json",
-            "Access-Control-Allow-Credentials": true,
-          },
-        }).then(response=>{
-          if (response.status === 200) return response.json();
-          throw new Error("authentication failed");
-        }).then(resObject=>{
-          setUser(resObject.user);
-        }).catch(err=>{
-          console.log(err);
-        });
-      };
-      getUser();
-
-    return user;
+      fetch("https://api.jimbro.fyi/auth/login/success", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "content-type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      }).then(response=>{
+        if (response.status === 200) return response.json();
+        throw new Error("authentication failed");
+      }).then(resObject=>{
+        setUser(resObject.user);
+      }).catch(err=>{
+        console.log(err);
+      });
+    };
+    getUser();
+  }, []);
+  
+  return (
+      <Loading user={user} />
+  );
 }
+
+export default FetchLogin;
