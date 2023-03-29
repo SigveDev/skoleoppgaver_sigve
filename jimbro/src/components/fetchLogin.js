@@ -25,6 +25,8 @@ function FetchLogin() {
     };
     getUser();
   }, []);
+
+  console.log(user);
   
   return (
     <Loading user={user} />
