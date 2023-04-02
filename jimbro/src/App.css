@@ -8,6 +8,18 @@
   display: none;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 h1 {
   font-size: 2.5rem;
   margin: 0px;
@@ -18,6 +30,21 @@ h2 {
   margin: 0px;
 }
 
+h3 {
+  font-size: 1.5rem;
+  margin: 20px;
+}
+
+p {
+  margin: 0.5em 0;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+/*BACKGROUND IMAGE*/
 .backgroundImage {
   position: fixed;
   top: 0;
@@ -28,8 +55,7 @@ h2 {
   transform: translate(0%, 0%);
 }
 
-
-
+/*DEFAULT*/
 .App {
   display: flex;
   flex-direction: column;
@@ -39,6 +65,58 @@ h2 {
   width: 100vw;
 }
 
+/*ERROR PAGE*/
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+/*ABOUT PAGE*/
+.about {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 10% 80% 10%;
+  height: 100%;
+  width: 100%;
+}
+
+.mainAbout {
+  display: flex;
+  flex-direction: column;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  justify-content: center;
+  align-items: center;
+}
+
+.credits {
+  display: flex;
+  flex-direction: column;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  font-size: 0.8rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.toLoginPage {
+  display: flex;
+  width: 150px;
+  height: fit-content;
+  padding: 10px 25px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 3px solid #ffffff50;
+  background-color: rgba(0,0,0,0.50);
+  cursor: pointer;
+}
+
+/*LOGIN PAGE*/
 .login {
   display: flex;
   justify-content: center;
@@ -117,6 +195,22 @@ h2 {
   background-color: rgba(0,0,0,0.50);
 }
 
+/*PLEASE LOGIN PAGE*/
+.pleaseLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.pleaseLogin h2 {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/*HOME PAGE*/
 .home {
   display: flex;
   width: 100%;
@@ -183,6 +277,9 @@ h2 {
   grid-row-start: 1;
   grid-row-end: 3;
   padding: 20px;
+
+  grid-template-columns: auto;
+  grid-template-rows: 50px auto;
 }
 
 .elementHeader {
@@ -223,13 +320,59 @@ h2 {
   cursor: pointer;
 }
 
-.loading {
+/*PR PAGE*/
+.prSite {
   display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.prMain {
+  display: flex;
+  width: 40%;
+  height: 60%;
+  box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
+  -moz-box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
+  border-radius: 20px;
+  padding: 20px;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255,255,255,0.70);
+  align-items: center;
+}
+
+.prBack {
+  display: flex;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+
+#bench, #deadlift, #squat {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  background-color: rgba(0,0,0,0.50);
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: white;
+}
+
+#submit {
+  width: 100%;
+  background-color: #525252;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {

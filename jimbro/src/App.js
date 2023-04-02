@@ -1,43 +1,33 @@
 import './App.css';
+import About from './pages/about';
+import PleaseLogin from './pages/pleaseLogin';
 import Login from './pages/login';
 import Home from './pages/home';
+import PrSite from './pages/pr';
+import Error from './pages/error';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import axios from 'axios';
 
 function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const getUser = ()=>{
-      fetch("https://api.jimbro.fyi/auth/login/success", {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "content-type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-          "access-control-allow-origin": "https://api.jimbro.fyi",
-        },
-      }).then(response=>{
-        if (response.status === 200) return response.json();
-        throw new Error("authentication failed");
-      }).then(resObject=>{
-        setUser(resObject.user);
-      }).catch(err=>{
-        console.log(err);
-      });
+    const getUser = async ()=>{
+      const res = await axios.get("http://api.jimbro.fyi/auth/login/success", { withCredentials: true });
+      setUser(res.data.user);
     };
     getUser();
   }, []);
-
-  console.log(user);
 
   return (
     <BrowserRouter>
     <div className="App">
       <Routes>
-        <Route path="/" element={user ? <Home user={user} /> : <Navigate to="/login" />} />
+        <Route path="/" element={user ? <Home user={user} /> : <About />} />
+        <Route path="/pr" element={user ? <PrSite user={user} /> : <PleaseLogin />} />
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
     </BrowserRouter>

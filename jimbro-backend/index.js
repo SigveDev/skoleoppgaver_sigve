@@ -4,21 +4,21 @@ const passport = require('passport');
 const passportSetup = require('./passport')
 const cors = require('cors');
 const authRoute = require("./routes/auth");
+const prRoute = require("./routes/setPr");
 const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 dotenv.config();
+app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
-});
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  // we're connected!
-});
+    useUnifiedTopology: true,
+    dbName: "jimbro"
+    })
+    .then(console.log("Connectet to mongoDB"))
+    .catch((err) => console.log(err));
 
 app.use(cookieSession(
     {
@@ -33,13 +33,14 @@ app.use(passport.session());
 
 app.use(
     cors({
-        origin: "https://jimbro.fyi",
+        origin: "http://jimbro.fyi",
         methods: "GET,POST,PUT,DELETE",
         credentials: true
     })
 );
 
 app.use("/auth", authRoute);
+app.use("/pr", prRoute);
 
 app.listen("25568", ()=>{
     console.log("Server is running on port 25568!");
