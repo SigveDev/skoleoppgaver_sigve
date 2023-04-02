@@ -5,7 +5,7 @@ import background from "../img/background-gray.png";
 const Login = () => {
 
     const google = ()=>{
-        window.open("http://api.jimbro.fyi/auth/google", "_self");
+        window.open("https://api.jimbro.fyi/auth/google", "_self");
     }
 
     const toAbout = () => {

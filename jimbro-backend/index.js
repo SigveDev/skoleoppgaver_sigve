@@ -33,7 +33,7 @@ app.use(passport.session());
 
 app.use(
     cors({
-        origin: "http://jimbro.fyi",
+        origin: "https://jimbro.fyi",
         methods: "GET,POST,PUT,DELETE",
         credentials: true
     })
