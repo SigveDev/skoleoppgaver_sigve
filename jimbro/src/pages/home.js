@@ -33,7 +33,7 @@ const Home = ({user}) => {
                 <div className="pr" onClick={editPr}>
                     <h2 className="elementHeader">My PRs</h2>
                     <div className="editIcon">
-                        <p className="smallText">Click box to edit</p>
+                        <p className="smallText">*Click box to edit</p>
                     </div>
                     <div className="prlist">
                         {pr === null ? <p>Loading...</p> : <p>Last updated:&ensp;{new Date(pr.updatedAt).toDateString()}</p>}
@@ -46,13 +46,13 @@ const Home = ({user}) => {
                 <div className="thisWeek">
                     <h2 className="elementHeader">This Week</h2>
                     <div className="editIcon">
-                        <p className="smallText">Click box to edit</p>
+                        <p className="smallText">*Click box to edit</p>
                     </div>
                 </div>
                 <div className="myDays">
                     <h2 className="elementHeader">My Plan</h2>
                     <div className="editIcon">
-                        <p className="smallText">Click box to edit</p>
+                        <p className="smallText">*Click box to edit</p>
                     </div>
                 </div>
             </div>
