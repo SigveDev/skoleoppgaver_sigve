@@ -37,19 +37,31 @@ router.put('/update/:id', async (req, res) => {
                 if(req.body.bench === "") {
                     newBench = pr[0].bench;
                 } else {
-                    newBench = req.body.bench + "kg";
+                    if(isNaN(req.body.bench) === false) {
+                        newBench = req.body.bench + " kg";
+                    } else {
+                        newBench = pr[0].bench;
+                    }
                 }
         
                 if(req.body.deadlift === "") {
                     newDeadlift = pr[0].deadlift;
                 } else {
-                    newDeadlift = req.body.deadlift + "kg";
+                    if(isNaN(req.body.deadlift) === false) {
+                        newDeadlift = req.body.deadlift + " kg";
+                    } else {
+                        newDeadlift = pr[0].deadlift;
+                    }
                 }
         
                 if(req.body.squat === "") {
                     newSquat = pr[0].squat;
                 } else {
-                    newSquat = req.body.squat + "kg";
+                    if(isNaN(req.body.squat) === false) {
+                        newSquat = req.body.squat + " kg";
+                    } else {
+                        newSquat = pr[0].squat;
+                    }
                 }
 
                 const updatePr = await Pr.findOneAndUpdate({ googleId: req.params.id }, {
