@@ -141,6 +141,7 @@ a {
   padding: 20px;
   flex-direction: column;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.7);
 }
 
@@ -255,6 +256,7 @@ a {
   padding: 5px 2px 5px 2px;
   background-color: rgba(0,0,0,0.30);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   grid-column-start: 3;
   grid-column-end: 4;
 }
@@ -265,10 +267,11 @@ a {
 
 .content {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: calc((100% - 20px - 20px) / 3) calc((100% - 20px - 20px) / 3) calc((100% - 20px - 20px) / 3);
+  grid-template-rows: calc(50% - 10px) calc(50% - 10px);
   gap: 20px;
   padding: 0px 20px 20px 20px;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 80px - 40px);
 }
 
 .pr {
@@ -276,11 +279,12 @@ a {
   position: relative;
   border-radius: 20px;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.7);
   background-color: rgba(0,0,0,0.40);
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 1;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
   grid-row-end: 3;
   padding: 20px;
 
@@ -298,6 +302,7 @@ a {
   display: grid;
   border-radius: 20px;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.7);
   background-color: rgba(0,0,0,0.40);
   grid-column-start: 2;
@@ -311,18 +316,45 @@ a {
   display: grid;
   border-radius: 20px;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.7);
   background-color: rgba(0,0,0,0.40);
-  grid-column-start: 2;
-  grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 2;
+
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
   padding: 20px;
+
+  height: calc(100% - 40px);
+
+  grid-template-columns: auto;
+  grid-template-rows: 50px auto;
+
+  cursor: pointer;
+  overflow-y: hidden;
+}
+
+.dayContent {
+  height: calc(100% - 50px);
+  overflow-y: scroll;
+}
+
+.day h3 {
+  margin: 0px;
+}
+
+.day p {
+  margin-left: 10px;
+}
+
+.day {
+  text-align: left;
 }
 
 .editIcon {
   display: flex;
-  position: fixed;
+  position: absolute;
   top: 10px;
   right: 20px;
   cursor: pointer;
@@ -332,7 +364,7 @@ a {
 .prSite {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   height: 100%;
 }
@@ -340,7 +372,8 @@ a {
 .prMain {
   display: flex;
   width: 40%;
-  height: 60%;
+  margin-top: 10vw;
+  height: fit-content;
   box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
   -webkit-box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
   -moz-box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
@@ -348,6 +381,7 @@ a {
   padding: 20px;
   flex-direction: column;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.7);
   align-items: center;
   text-align: center;
@@ -361,7 +395,7 @@ a {
   cursor: pointer;
 }
 
-#bench, #deadlift, #squat {
+.prMain form input[type=number] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -382,6 +416,134 @@ a {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+/*DAY PAGE*/
+.daySite {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.dayMain {
+  display: flex;
+  width: 40%;
+  margin-top: 10vw;
+  height: fit-content;
+  box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
+  -moz-box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
+  border-radius: 20px;
+  padding: 20px;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  align-items: center;
+  text-align: center;
+}
+
+.dayBack {
+  display: flex;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+
+.newDay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.dayMain form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.addExercise {
+  position: relative;
+  background-color: #ffffff00;
+  border: none;
+  color: white;
+  top: 12px;
+  cursor: pointer;
+}
+
+.deleteButton {
+  position: relative;
+  background-color: #ffffff00;
+  border: none;
+  color: red;
+  top: 12px;
+  cursor: pointer;
+}
+
+.updateButton {
+  width: 60%;
+  align-self: center;
+  background-color: #00059d;
+  border: 2px solid #048eff;
+  border-radius: 4px;
+  color: white;
+  font-size: large;
+  font-weight: 600;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.spacerForm {
+  width: 44px;
+  height: 38px;
+}
+
+.formPortion {
+  margin-bottom: 2.5em;
+  border-bottom: white solid 1px;
+  border-top: white solid 1px;
+  padding: 0.8em 0;
+}
+
+.dayMain form input.name[type=text] {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  background-color: rgba(0,0,0,0.50);
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.dayMain form input.subname[type=text] {
+  width: 70%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  background-color: rgba(0,0,0,0.50);
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.dayMain form div div label {
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.dayMain form div div div label {
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 @media only screen and (max-width: 600px) {
@@ -445,8 +607,9 @@ a {
     grid-row-end: 4;
   }
 
-  .prMain {
-    width: 70%;
-    height: 80%;
+  .prMain, .dayMain {
+    width: 70vw;
+    margin-top: 10vw;
+    height: fit-content;
   }
 }

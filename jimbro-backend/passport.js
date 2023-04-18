@@ -3,6 +3,7 @@ const passport = require('passport');
 const dotenv = require('dotenv');
 const User = require('./models/user');
 const Pr = require('./models/pr');
+const Plan = require('./models/planer');
 
 dotenv.config();
 
@@ -23,11 +24,40 @@ passport.use(new GoogleStrategy({
 
       const blankPr = new Pr({
         googleId: profile.id,
-        bench: "0kg",
-        deadlift: "0kg",
-        squat: "0kg",
+        bench: "0 kg",
+        deadlift: "0 kg",
+        squat: "0 kg",
       });
       blankPr.save();
+
+      const blankPlan = new Plan({
+        googleId: profile.id,
+        days: [
+          {
+            day: "day1",
+            exercises: [
+              {
+                exercise: "exercise1"
+              },
+              {
+                exercise: "exercise2"
+              }
+            ]
+          },
+          {
+            day: "day2",
+            exercises: [
+              {
+                exercise: "exercise1"
+              },
+              {
+                exercise: "exercise2"
+              }
+            ]
+          }
+        ],
+      });
+      blankPlan.save();
     } else {
       const updateName = await User.findOne({ name: profile.displayName }).exec();
 

@@ -5,6 +5,7 @@ const passportSetup = require('./passport')
 const cors = require('cors');
 const authRoute = require("./routes/auth");
 const prRoute = require("./routes/setPr");
+const planRoute = require("./routes/setPlaner");
 const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -33,7 +34,7 @@ app.use(passport.session());
 
 app.use(
     cors({
-        origin: "http://localhost:3000",
+        origin: "https://jimbro.fyi",
         methods: "GET,POST,PUT,DELETE",
         credentials: true
     })
@@ -41,7 +42,8 @@ app.use(
 
 app.use("/auth", authRoute);
 app.use("/pr", prRoute);
+app.use("/plan", planRoute);
 
-app.listen("5000", ()=>{
-    console.log("Server is running on port 5000!");
+app.listen("25568", ()=>{
+    console.log("Server is running on port 25568!");
 })

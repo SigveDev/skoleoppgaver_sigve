@@ -5,6 +5,7 @@ import axios from "axios";
 
 const Home = ({user}) => {
     const [pr, setPr] = useState(null);
+    const [day, setDay] = useState(null);
 
     useEffect(() => {
         const getPr = async () => {
@@ -12,15 +13,25 @@ const Home = ({user}) => {
             setPr(res.data[0]);
         };
         getPr();
+
+        const getDay = async () => {
+            const res = await axios.get("https://api.jimbro.fyi/plan/get/" + user.id, { withCredentials: true });
+            setDay(res.data[0]);
+        };
+        getDay();
     }, []);
 
     const logout = () => {
         window.open("https://api.jimbro.fyi/auth/logout", "_self");
     };
-
+    
     const editPr = ()=>{
         window.open("/pr", "_self");
-    }
+    };
+
+    const editDay = ()=>{
+        window.open("/days", "_self");
+    };
 
     return (
         <div className="home">
@@ -30,6 +41,42 @@ const Home = ({user}) => {
                 <h2 className="logout" onClick={logout}>Logout</h2>
             </div>
             <div className="content">
+                <div className="myDays" onClick={editDay}>
+                    <div className="editIcon">
+                        <p className="smallText">*Click box to edit</p>
+                    </div>
+                    <h2 className="elementHeader">My Plan</h2>
+                    <div className="dayContent">
+                    {day === null ? <p>Loading...</p> : 
+                        <div className="daylist">
+                            <p>Last updated:&ensp;{new Date(day.updatedAt).toDateString()}</p>
+                            <br />
+                            {day.days.map((days) => {
+                                return (
+                                    <div className="day">
+                                        <h3>{days.day}:</h3>
+                                        <div className="exercises">
+                                            {days.exercises.map((exercises) => {
+                                                return (
+                                                    <div className="exercise">
+                                                        <p>{exercises.exercise}</p>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    }
+                    </div>
+                </div>
+                <div className="thisWeek">
+                    <h2 className="elementHeader">This Week</h2>
+                    <div className="editIcon">
+                        <p className="smallText">*Click box to edit</p>
+                    </div>
+                </div>
                 <div className="pr" onClick={editPr}>
                     <h2 className="elementHeader">My PRs</h2>
                     <div className="editIcon">
@@ -41,18 +88,6 @@ const Home = ({user}) => {
                         {pr === null ? <h3>Loading...</h3> : <h3>Bench: {pr.bench}</h3>}
                         {pr === null ? <h3>Loading...</h3> : <h3>Deadlift: {pr.deadlift}</h3>}
                         {pr === null ? <h3>Loading...</h3> : <h3>Squat: {pr.squat}</h3>}
-                    </div>
-                </div>
-                <div className="thisWeek">
-                    <h2 className="elementHeader">This Week</h2>
-                    <div className="editIcon">
-                        <p className="smallText">*Click box to edit</p>
-                    </div>
-                </div>
-                <div className="myDays">
-                    <h2 className="elementHeader">My Plan</h2>
-                    <div className="editIcon">
-                        <p className="smallText">*Click box to edit</p>
                     </div>
                 </div>
             </div>
