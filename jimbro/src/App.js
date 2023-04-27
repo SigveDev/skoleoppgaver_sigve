@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     const getUser = async ()=>{
-      const res = await axios.get("https://api.jimbro.fyi/login/success", { withCredentials: true });
+      const res = await axios.get("https://api.jimbro.fyi/auth/login/success", { withCredentials: true });
       setUser(res.data.user);
     };
     getUser();
