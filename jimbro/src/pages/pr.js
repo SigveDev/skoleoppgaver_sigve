@@ -6,6 +6,7 @@ const PrSite = ({user}) => {
 
     const updatePr = async (e) => {
         e.preventDefault();
+        console.log(document.getElementById("bench").value);
         try {
             const res = await axios.put("https://api.jimbro.fyi/pr/update/" + user.id, {
                 googleId: user.id,
