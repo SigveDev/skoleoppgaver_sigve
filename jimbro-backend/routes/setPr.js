@@ -37,9 +37,7 @@ router.put('/update/:id', async (req, res) => {
                 if(req.body.bench === "") {
                     newBench = pr[0].bench;
                 } else {
-                    if(typeof req.body.bench !== "number") {
-                        newBench = pr[0].bench;
-                    } else if(isNaN(req.body.bench) === false) {
+                    if(typeof req.body.bench === "number") {
                         newBench = req.body.bench + " kg";
                     } else {
                         newBench = pr[0].bench;
@@ -49,10 +47,8 @@ router.put('/update/:id', async (req, res) => {
                 if(req.body.deadlift === "") {
                     newDeadlift = pr[0].deadlift;
                 } else {
-                    if(typeof req.body.deadlift !== "number") {
-                        newDeadlift = pr[0].deadlift;
-                    } else if(isNaN(req.body.deadlift) === false) {
-                        newDeadlift = req.body.deadlift + " kg";
+                    if(typeof req.body.deadlift === "number") {
+                        newBench = req.body.deadlift + " kg";
                     } else {
                         newDeadlift = pr[0].deadlift;
                     }
@@ -61,9 +57,7 @@ router.put('/update/:id', async (req, res) => {
                 if(req.body.squat == "") {
                     newSquat = pr[0].squat;
                 } else {
-                    if(typeof req.body.squat !== "number") {
-                        newSquat = pr[0].squat;
-                    } else if(isNaN(req.body.squat) === false) {
+                    if(typeof req.body.squat === "number") {
                         newSquat = req.body.squat + " kg";
                     } else {
                         newSquat = pr[0].squat;
