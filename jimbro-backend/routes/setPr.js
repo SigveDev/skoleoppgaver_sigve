@@ -48,7 +48,7 @@ router.put('/update/:id', async (req, res) => {
                     newDeadlift = pr[0].deadlift;
                 } else {
                     if(typeof req.body.deadlift === "number") {
-                        newBench = req.body.deadlift + " kg";
+                        newDeadlift = req.body.deadlift + " kg";
                     } else {
                         newDeadlift = pr[0].deadlift;
                     }
