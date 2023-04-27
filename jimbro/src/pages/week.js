@@ -26,7 +26,7 @@ const Week = ({user}) => {
             element.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
             return;
         } else {
-            setTimeout(setCorrectDay, 500);
+            setCorrectDay(week);
         }
     }
 
