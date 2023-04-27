@@ -40,7 +40,7 @@ const Home = ({user}) => {
             element.scrollIntoView({behavior: "smooth", block: "end", inline: "start"});
             return;
         } else {
-            setCorrectDay(week);
+            setTimeout(setCorrectDay, 100);
         }
     }
 
