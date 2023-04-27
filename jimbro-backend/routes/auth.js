@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const passport = require('passport');
 
-const CLIENT_ID = "http://localhost:3000";
+const CLIENT_ID = "https://jimbro.fyi";
 const CLIENT_ID_LOGOUT = CLIENT_ID + "/login";
 
 router.get('/login/success', (req, res) => {
