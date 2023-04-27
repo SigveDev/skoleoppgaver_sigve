@@ -9,6 +9,7 @@ const PrSite = ({user}) => {
         let newBench = parseInt(console.log(document.getElementById("bench").value));
         let newDeadlift = parseInt(console.log(document.getElementById("deadlift").value));
         let newSquat = parseInt(console.log(document.getElementById("squat").value));
+        console.log(typeof newBench);
         try {
             const res = await axios.put("https://api.jimbro.fyi/pr/update/" + user.id, {
                 googleId: user.id,
