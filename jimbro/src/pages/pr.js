@@ -14,19 +14,15 @@ const PrSite = ({user}) => {
                 squat: document.getElementById("squat").value
             }, { withCredentials: true });
         } catch (err) {}
-        toMain();
-    }
-
-    const toMain = () => {
         window.open("/", "_self");
     }
 
     return (
         <div className="prSite">
             <div className="prMain">
-                <div className="prBack" onClick={toMain}>
+                <a href="/" className="prBack">
                     <ion-icon name="close-outline" size="large"></ion-icon>
-                </div>
+                </a>
                 <h1>Edit PR</h1>
                 <h2>New personal records:</h2>
                 <br />

@@ -44,6 +44,10 @@ a {
   text-decoration: none;
 }
 
+.oldLink {
+  text-decoration: underline;
+}
+
 .smallText {
   font-size: 0.8rem;
 }
@@ -250,10 +254,12 @@ a {
 }
 
 .logout {
-  cursor: pointer;
   border: 3px solid #ffffff50;
   border-radius: 5px;
   padding: 5px 2px 5px 2px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
   background-color: rgba(0,0,0,0.30);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -275,6 +281,8 @@ a {
 }
 
 .pr {
+  all: unset;
+
   display: grid;
   position: relative;
   border-radius: 20px;
@@ -294,11 +302,17 @@ a {
   cursor: pointer;
 }
 
+.pr .prlist h3 {
+  font-size: 1.2rem;
+}
+
 .elementHeader {
   font-weight: bold;
 }
 
 .thisWeek {
+  all: unset;
+
   display: grid;
   border-radius: 20px;
   backdrop-filter: blur(10px);
@@ -310,9 +324,54 @@ a {
   grid-row-start: 1;
   grid-row-end: 1;
   padding: 20px;
+
+  grid-template-columns: auto;
+  grid-template-rows: 50px 35px auto;
+
+  cursor: pointer;
+}
+
+.weekContent {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.weekContent .smallweek {
+  display: flex;
+}
+
+.weekContent .smallweek .weekDay {
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  border-left: 1px solid rgba(255, 255, 255, 0.7);
+  border-right: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.weekContent .smallweek .weekDay:first-child {
+  border-left: none;
+}
+
+.weekContent .smallweek .weekDay:last-child {
+  border-right: none;
+}
+
+.weekContent .smallweek .weekDay h3 {
+  margin: 5px;
+}
+
+.weekContent .smallweek .weekDay div div p {
+  margin-left: 10px;
+  width: fit-content;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .myDays {
+  all: unset;
+
   display: grid;
   border-radius: 20px;
   backdrop-filter: blur(10px);
@@ -358,6 +417,10 @@ a {
   top: 10px;
   right: 20px;
   cursor: pointer;
+}
+
+.lastUpdated {
+  font-size: 1rem;
 }
 
 /*PR PAGE*/
@@ -546,6 +609,129 @@ a {
   font-weight: 400;
 }
 
+/*WEEK PAGE*/
+.weekSite {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.weekMain {
+  display: flex;
+  width: 80%;
+  margin-top: 10vw;
+  height: fit-content;
+  box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
+  -moz-box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
+  border-radius: 20px;
+  padding: 20px;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  align-items: center;
+  text-align: center;
+}
+
+.weekBack {
+  display: flex;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+
+.weekView {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+}
+
+.weekContent{
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto auto auto auto auto;
+  grid-gap: 1.5em;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+}
+
+.weekDayView {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8em;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  background-color: rgba(0,0,0,0.50);
+}
+
+.newPlanPage {
+  display: flex;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.weekDayView .plan {
+  display: flex;
+  width: fit-content;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+/*NEWPLAN PAGE*/
+.newPlan {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.planBox {
+  display: flex;
+  width: 80%;
+  margin-top: 10vw;
+  height: fit-content;
+  box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
+  -moz-box-shadow: -3px 1px 82px 22px rgba(0,0,0,0.75);
+  border-radius: 20px;
+  padding: 20px;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  align-items: center;
+  text-align: center;
+}
+
+.planBack {
+  display: flex;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 600px) {
   .App {
     min-height: 100vh;
@@ -583,28 +769,30 @@ a {
   .content {
     grid-template-columns: auto;
     grid-template-rows: auto auto auto auto;
-    min-height: calc(120vh - 200px);
+    min-height: calc((200vh - 200px) + 80px);
   }
 
   .pr {
     grid-column-start: 1;
     grid-column-end: 1;
-    grid-row-start: 1;
+    grid-row-start: 2;
     grid-row-end: 3;
   }
 
   .thisWeek {
     grid-column-start: 1;
     grid-column-end: 1;
-    grid-row-start: 3;
-    grid-row-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
   }
 
   .myDays {
     grid-column-start: 1;
     grid-column-end: 1;
-    grid-row-start: 4;
+    grid-row-start: 3;
     grid-row-end: 4;
+
+    min-height: 400px;
   }
 
   .prMain, .dayMain {

@@ -59,12 +59,14 @@ const DaySite = ({user}) => {
         document.getElementById("formContent").insertAdjacentHTML('beforeend', `
             <div id="dayDiv${dayCount + 1}" class="formPortion">
                 <label for="day${dayCount + 1}" id="dayLabel"${dayCount + 1}">Day:</label><br />
-                <input type="text" class="name" id="day${dayCount + 1}" name="day${dayCount + 1}" placeholder="Name of the new day" defaultValue="" />
+                <input type="text" class="name" id="day${dayCount + 1}" name="day${dayCount + 1}" placeholder="Name of the new day" defaultValue="" maxlength="10" />
                 <button type="button" class="addExercise" id="moreExerciseButton${dayCount + 1}" title="Add New Exercise"><ion-icon name="add-circle-outline" size="large"></ion-icon></button>
                 <button type="button" id="delete${dayCount + 1}" class="deleteButton" title="Delete Day"><ion-icon name="trash-outline" size="large"></ion-icon></button>
                 <br /><br />
             </div>
         `);
+
+        document.getElementById("dayDiv" + (myDayCount + 1)).scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
 
         console.log(myDayCount + 1);
         document.getElementById("delete" + (dayCount + 1)).addEventListener("click", () => deleteDay("dayDiv" + (myDayCount + 1)));
@@ -94,7 +96,6 @@ const DaySite = ({user}) => {
         let myDayCount = id.split("Div");
         exerciseCount -= eval(myDayCount[0] + myDayCount[1] + "Exercise");
         eval(myDayCount[0] + myDayCount[1] + "Exercise" + " = " + "0");
-        let myDayCountInt = parseInt(myDayCount[1]);
     }
 
     const deleteExercise = (id, name) => {
@@ -107,7 +108,7 @@ const DaySite = ({user}) => {
     return (
         <div className="daySite">
             <div className="dayMain">
-                <a className="dayBack" href="/">
+                <a href="/" className="dayBack">
                     <ion-icon name="close-outline" size="large"></ion-icon>
                 </a>
                 <button className="newDay" onClick={() => moreDays(dayCount)} title="Add New Day">
@@ -125,7 +126,7 @@ const DaySite = ({user}) => {
                         return (
                             <div id={"dayDiv" + dayCount} className="formPortion">
                                 <label htmlFor={"day" + dayCount} id={"dayLabel" + dayCount}>Day:</label><br />
-                                <input type="text" className="name" id={"day" + dayCount} name={"day" + dayCount} placeholder="eks. Push" defaultValue={days.day} />
+                                <input type="text" className="name" id={"day" + dayCount} name={"day" + dayCount} placeholder="eks. Push" defaultValue={days.day} maxlength="10" />
                                 <button type="button" className="addExercise" onClick={() => moreExercise("dayDiv" + ownDayCount)} title="Add New Exercise"><ion-icon name="add-circle-outline" size="large"></ion-icon></button>
                                 {days !== day.days[0] ? <button type="button" id={"delete" + dayCount} className="deleteButton" onClick={() => deleteDay("dayDiv" + ownDayCount)} title="Delete Day"><ion-icon name="trash-outline" size="large"></ion-icon></button> : <br />}
                                 <br />
