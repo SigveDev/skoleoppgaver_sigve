@@ -40,7 +40,7 @@ const Home = ({user}) => {
             element.scrollIntoView({behavior: "smooth", block: "end", inline: "start"});
             return;
         } else {
-            setTimeout(setCorrectDay, 1000);
+            setTimeout(setCorrectDay, 500);
         }
     }
 

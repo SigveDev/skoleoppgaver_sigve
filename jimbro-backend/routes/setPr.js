@@ -34,18 +34,36 @@ router.put('/update/:id', async (req, res) => {
 
         if (pr[0].googleId === req.body.googleId) {
             try {
-                newBench = req.body.bench;
-                if(typeof newBench !== "number") {
+                if(req.body.bench !== "") {
+                    let tempBench = req.body.bench.replace(/\D/g, "");
+                    if(tempBench === "") {
+                        newBench = "0 kg";
+                    } else {
+                        newBench = tempBench + " kg";
+                    }
+                } else {
                     newBench = pr[0].bench;
                 }
                 
-                newDeadlift = req.body.deadlift;
-                if(typeof req.body.deadlift !== "number") {
+                if(req.body.deadlift !== "") {
+                    let tempDeadlift = req.body.deadlift.replace(/\D/g, "");
+                    if(tempDeadlift === "") {
+                        newDeadlift = "0 kg";
+                    } else {
+                        newDeadlift = tempDeadlift + " kg";
+                    }
+                } else {
                     newDeadlift = pr[0].deadlift;
                 }
                 
-                newSquat = req.body.squat;
-                if(typeof req.body.squat !== "number") {
+                if(req.body.squat !== "") {
+                    let tempSquat = req.body.squat.replace(/\D/g, "");
+                    if(tempSquat === "") {
+                        newSquat = "0 kg";
+                    } else {
+                        newSquat = tempSquat + " kg";
+                    }
+                } else {
                     newSquat = pr[0].squat;
                 }
 

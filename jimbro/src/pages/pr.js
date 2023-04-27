@@ -6,16 +6,12 @@ const PrSite = ({user}) => {
 
     const updatePr = async (e) => {
         e.preventDefault();
-        let newBench = parseInt(console.log(document.getElementById("bench").value));
-        let newDeadlift = parseInt(console.log(document.getElementById("deadlift").value));
-        let newSquat = parseInt(console.log(document.getElementById("squat").value));
-        console.log(typeof newBench);
         try {
             const res = await axios.put("https://api.jimbro.fyi/pr/update/" + user.id, {
                 googleId: user.id,
-                bench: newBench,
-                deadlift: newDeadlift,
-                squat: newSquat
+                bench: document.getElementById("bench").value,
+                deadlift: document.getElementById("deadlift").value,
+                squat: document.getElementById("squat").value
             }, { withCredentials: true });
         } catch (err) {}
         window.open("/", "_self");
