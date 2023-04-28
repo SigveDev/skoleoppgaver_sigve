@@ -24,9 +24,9 @@ passport.use(new GoogleStrategy({
 
       const blankPr = new Pr({
         googleId: profile.id,
-        bench: "0 kg",
-        deadlift: "0 kg",
-        squat: "0 kg",
+        bench: "empty",
+        deadlift: "empty",
+        squat: "empty",
       });
       blankPr.save();
 

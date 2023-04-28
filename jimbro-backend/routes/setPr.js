@@ -1,5 +1,9 @@
 const router = require('express').Router();
+const CryptoJS = require('crypto-js');
+const dotenv = require('dotenv');
 const Pr = require('../models/pr');
+
+dotenv.config();
 
 //create a user pr
 router.post('/create/:id', async (req, res) => {
@@ -21,7 +25,16 @@ router.post('/create/:id', async (req, res) => {
 router.get('/get/:id', async (req, res) => {
     try {
         let pr = await Pr.find({ googleId: req.params.id });
-        res.status(200).json(pr);
+        let uncryptedPr = [{
+            __id: pr[0]._id,
+            googleId: pr[0].googleId,
+            bench: CryptoJS.AES.decrypt(pr[0].bench, process.env.SECRET_KEY).toString(CryptoJS.enc.Utf8),
+            deadlift: CryptoJS.AES.decrypt(pr[0].deadlift, process.env.SECRET_KEY).toString(CryptoJS.enc.Utf8),
+            squat: CryptoJS.AES.decrypt(pr[0].squat, process.env.SECRET_KEY).toString(CryptoJS.enc.Utf8),
+            createdAt: pr[0].createdAt,
+            updatedAt: pr[0].updatedAt,
+        }];
+        res.status(200).json(uncryptedPr);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -35,33 +48,33 @@ router.put('/update/:id', async (req, res) => {
         if (pr[0].googleId === req.body.googleId) {
             try {
                 if(req.body.bench !== "") {
-                    let tempBench = req.body.bench.replace(/\D/g, "");
+                    let tempBench = req.body.bench.replace(/\D/g, "") + " kg";
                     if(tempBench === "") {
-                        newBench = "0 kg";
+                        newBench = "empty";
                     } else {
-                        newBench = tempBench + " kg";
+                        newBench = CryptoJS.AES.encrypt(tempBench, process.env.SECRET_KEY).toString();
                     }
                 } else {
                     newBench = pr[0].bench;
                 }
                 
                 if(req.body.deadlift !== "") {
-                    let tempDeadlift = req.body.deadlift.replace(/\D/g, "");
+                    let tempDeadlift = req.body.deadlift.replace(/\D/g, "") + " kg";
                     if(tempDeadlift === "") {
-                        newDeadlift = "0 kg";
+                        newDeadlift = "empty";
                     } else {
-                        newDeadlift = tempDeadlift + " kg";
+                        newDeadlift = CryptoJS.AES.encrypt(tempDeadlift, process.env.SECRET_KEY).toString();
                     }
                 } else {
                     newDeadlift = pr[0].deadlift;
                 }
                 
                 if(req.body.squat !== "") {
-                    let tempSquat = req.body.squat.replace(/\D/g, "");
+                    let tempSquat = req.body.squat.replace(/\D/g, "") + " kg";
                     if(tempSquat === "") {
-                        newSquat = "0 kg";
+                        newSquat = "empty";
                     } else {
-                        newSquat = tempSquat + " kg";
+                        newSquat = CryptoJS.AES.encrypt(tempSquat, process.env.SECRET_KEY).toString();
                     }
                 } else {
                     newSquat = pr[0].squat;
