@@ -7,7 +7,7 @@ const PrSite = ({user}) => {
     const updatePr = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.put("https://api.jimbro.fyi/pr/update/" + user.id, {
+            const res = await axios.put("http://localhost:5000/pr/update/" + user.id, {
                 googleId: user.id,
                 bench: document.getElementById("bench").value,
                 deadlift: document.getElementById("deadlift").value,
@@ -28,11 +28,11 @@ const PrSite = ({user}) => {
                 <br />
                 <form method="GET" onSubmit={updatePr}>
                     <label htmlFor="bench">Bench:</label><br />
-                    <input type="number" id="bench" name="bench" placeholder="in kg"/><br />
+                    <input type="number" id="bench" name="bench" placeholder="in kg" maxlength="4" /><br />
                     <label htmlFor="deadlift">Deadlift:</label><br />
-                    <input type="number" id="deadlift" name="deadlift" placeholder="in kg"/><br />
+                    <input type="number" id="deadlift" name="deadlift" placeholder="in kg" maxlength="5" /><br />
                     <label htmlFor="squat">Squat:</label><br />
-                    <input type="number" id="squat" name="squat" placeholder="in kg"/><br />
+                    <input type="number" id="squat" name="squat" placeholder="in kg" maxlength="5" /><br />
                     <input type="submit" id="submit" value="Update" />
                 </form>
             </div>

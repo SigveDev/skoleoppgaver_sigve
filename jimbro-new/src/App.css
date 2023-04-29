@@ -1,0 +1,532 @@
+:root {
+  --main-color: #F6F8FA;
+  --main-color2: #ffffff;
+  --accent-color1: #557CFA;
+  --accent-color2: #E95584;
+  --accent-color3: #9D72F2;
+  --accent-color4: #3665F7;
+  --name-color: #000000;
+  --delete-color: red;
+  --header-color: #4E4E4E;
+  --text-color1: #FFFFFF;
+  --text-color2: #616161;
+  --link-color: #0099FF;
+  --icon-color-unselected: #8B8B8B;
+  --icon-hover-color: #5f5f5f;
+  --icon-color-selected: var(--accent-color4);
+  --drop-shadow-color: #0075B922;
+  --drop-shadow-opacity: 6px;
+  --scrollbar: #d5d5d5;
+  --scrollbar-hover: #c7c7c7;
+}
+
+::-webkit-scrollbar {
+  height: 0px;
+}
+/* commented out because i dont want a scrollbar, but i might want it later
+::-webkit-scrollbar-track {
+  background: var(--main-color); 
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}*/
+
+body, html, #root, .App {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--main-color);
+}
+
+/*NavBar*/
+.content .navBar {
+  grid-area: navBar;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 90%;
+  margin-top: 20px;
+  border-radius: 30px;
+  background-color: var(--main-color2);
+  box-shadow: 0px 5px var(--drop-shadow-opacity) var(--drop-shadow-color);
+}
+.content .navBar .navElem {
+  display: flex;
+  font-size: 2.4rem;
+  color: var(--icon-color-unselected);
+  transition: color 0.2s ease-in-out;
+  justify-content: center;
+  align-items: center;
+}
+.content .navBar .navElem:hover {
+  color: var(--icon-hover-color);
+}
+.content .navBar .active {
+  color: var(--icon-color-selected);
+}
+
+/*cross-site*/
+.home, .prSite {
+  width: calc(100vw - 10vw);
+  height: calc(100vh - 2vh);
+  padding: 1vh 5vw;
+}
+.home .userName, .prSite .userName {
+  color: var(--name-color);
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+  height: 5%;
+}
+.home .userName .hello, .prSite .userName .hello {
+  color: var(--text-color2);
+  font-size: 1.6rem;
+}
+
+/*Home*/
+.home .content {
+  display: grid;
+  height: calc(90% - 20px);
+  width: 100%;
+  grid-template-columns: 100%;
+  grid-template-rows: 44% 44% 12%;
+  grid-template-areas:
+    "otherWeek"
+    "myWeek"
+    "navBar"
+  ;
+  margin-top: 20px;
+}
+.home .content .otherPlans {
+  grid-area: otherWeek;
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 10% 25% 65%;
+  grid-template-areas:
+    "otherHeader moreLink"
+    "weekOption weekOption"
+    "weekViewer weekViewer"
+  ;
+}
+.home .content .otherPlans .otherHeader {
+  grid-area: otherHeader;
+  display: flex;
+  align-items: flex-end;
+  color: var(--header-color);
+  margin: 0;
+  font-weight: 600;
+}
+.home .content .otherPlans .moreLink {
+  grid-area: moreLink;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  color: var(--link-color);
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+  text-decoration: none;
+}
+.home .content .otherPlans .daysList {
+  grid-area: weekOption;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+  width: calc(100%);
+  margin-left: -5vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+.home .content .otherPlans .daysList .day {
+  display: flex;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: white;
+  margin: 0.5em;
+  border: none;
+  text-decoration: none;
+  color: var(--header-color);
+  box-shadow: 0px 5px var(--drop-shadow-opacity) var(--drop-shadow-color);
+}
+.home .content .otherPlans .daysList .day:first-child {
+  margin-left: 0;
+}
+.home .content .otherPlans .daysList .day:last-child {
+  margin-right: 0;
+}
+.home .content .otherPlans .thisDay {
+  grid-area: weekViewer;
+}
+.home .content .otherPlans .thisDay .dayList {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+  width: calc(100%);
+  margin-left: -5vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+.home .content .otherPlans .thisDay .dayList .dayPlan {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 30% 20% 16% 16% 18%;
+  grid-template-areas:
+    "planPfp planTime"
+    "planOwner planOwner"
+    "planPlace planPlace"
+    "planDesc planDesc"
+    "planAmount planAmount"
+  ;
+  width: 240px;
+  height: 95%;
+  border-radius: 10px;
+  margin: 0 0.5em;
+  flex-shrink: 0;
+  box-shadow: 0px 5px var(--drop-shadow-opacity) var(--drop-shadow-color);
+}
+.home .content .otherPlans .thisDay .dayList .dayPlan:first-child {
+  margin-left: 0;
+}
+.home .content .otherPlans .thisDay .dayList .dayPlan:last-child {
+  margin-right: 0;
+}
+.home .content .otherPlans .thisDay .dayList .dayPlan:nth-child(1) {
+  background-color: var(--accent-color1);
+}
+.home .content .otherPlans .thisDay .dayList .dayPlan:nth-child(2) {
+  background-color: var(--accent-color2);
+}
+.home .content .otherPlans .thisDay .dayList .dayPlan:nth-child(3) {
+  background-color: var(--accent-color3);
+}
+.home .content .otherPlans .thisDay .dayList .dayPlan .daypfp {
+  grid-area: planPfp;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: white;
+  margin: 0.5em;
+}
+.home .content .otherPlans .thisDay .dayList .dayPlan .dayTime {
+  grid-area: planTime;
+  display: flex;
+  height: 100%;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin: 0.5em;
+  color: var(--text-color1);
+  font-size: 1.1rem;
+}
+.home .content .otherPlans .thisDay .dayList .dayPlan .dayUser {
+  grid-area: planOwner;
+  display: flex;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0.5em;
+  color: var(--text-color1);
+  font-size: 1.4rem;
+}
+.home .content .otherPlans .thisDay .dayList .dayPlan .dayWhere, .home .content .otherPlans .thisDay .dayList .dayPlan .dayWhat, .home .content .otherPlans .thisDay .dayList .dayPlan .dayAmount {
+  display: flex;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0.5em;
+  color: var(--text-color1);
+  font-size: 1rem;
+}
+.home .content .otherPlans .thisDay .dayList .dayPlan .dayWhere {
+  grid-area: planPlace;
+}
+.home .content .otherPlans .thisDay .dayList .dayPlan .dayWhat {
+  grid-area: planDesc;
+}
+.home .content .otherPlans .thisDay .dayList .dayPlan .dayAmount {
+  grid-area: planAmount;
+}
+ion-icon {
+  font-size: 1.4em;
+}
+.home .content .myPlans {
+  grid-area: myWeek;
+  display: grid;
+  grid-template-columns: 90% 10%;
+  grid-template-rows: 10% 90%;
+  grid-template-areas:
+  "myHeader newLink"
+  "myViewer myViewer"
+  ;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+}
+.home .content .myPlans .myHeader {
+  grid-area: myHeader;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--header-color);
+  margin: 0;
+  font-weight: 600;
+}
+.home .content .myPlans .moreLink {
+  grid-area: newLink;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: var(--accent-color4);
+  margin: 0;
+  font-weight: 600;
+}
+.home .content .myPlans .myDayList {
+  grid-area: myViewer;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: calc(100% + 5vw);
+  margin-left: -5vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+.home .content .myPlans .myDayList div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+.home .content .myPlans .myDayList div .myDayPlan {
+  display: grid;
+  grid-template-columns: 30% 40% 18% 12%;
+  grid-template-rows: 40% 30% 30%;
+  grid-template-areas:
+    "planPfp planDesc planTime planDelete"
+    "planPfp planDay planTime planDelete"
+    "planPfp planPlace planTime planDelete"
+  ;
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  margin: 0.5em 0;
+  flex-shrink: 0;
+  box-shadow: 0px 5px var(--drop-shadow-opacity) var(--drop-shadow-color);
+  background-color: var(--main-color2);
+}
+.home .content .myPlans .myDayList div .myDayPlan .myDaypfp {
+  grid-area: planPfp;
+  display: flex;
+  height: 70%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: white;
+  margin: 0.5em;
+}
+.home .content .myPlans .myDayList div .myDayPlan .myDayWhat {
+  grid-area: planDesc;
+  display: flex;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--accent-color4);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.home .content .myPlans .myDayList div .myDayPlan .myDayTime {
+  grid-area: planTime;
+  display: flex;
+  height: 100%;
+  justify-content: flex-end;
+  align-items: flex-start;
+  color: var(--text-color2);
+  font-size: 1.1rem;
+  padding-top: 50%;
+}
+.home .content .myPlans .myDayList div .myDayPlan .myTrash {
+  grid-area: planDelete;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  color: var(--delete-color);
+  font-size: 1.1rem;
+  padding-top: 30%;
+  background: transparent;
+  border: none;
+}
+.home .content .myPlans .myDayList div .myDayPlan .myDayDay, .home .content .myPlans .myDayList div .myDayPlan .myDayWhere {
+  display: flex;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--text-color2);
+  font-size: 1.1rem;
+}
+.home .content .myPlans .myDayList div .myDayPlan .myDayDay {
+  grid-area: planDay;
+}
+.home .content .myPlans .myDayList div .myDayPlan .myDayWhere {
+  grid-area: planPlace;
+}
+
+.prSite .content {
+  display: grid;
+  height: calc(90% - 20px);
+  width: 100%;
+  grid-template-columns: 100%;
+  grid-template-rows: 50% 38% 12%;
+  grid-template-areas:
+    "prs"
+    "."
+    "navBar"
+  ;
+  margin-top: 20px;
+}
+.prSite .content .pr {
+  grid-area: prs;
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 10% 8% 82%;
+  grid-template-areas:
+    "prTitle moreLink"
+    "prUpdate prUpdate"
+    "prContent prContent"
+  ;
+}
+.prSite .content .pr .prTitle {
+  grid-area: prTitle;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  color: var(--header-color);
+  font-weight: 600;
+}
+.prSite .content .pr .editLink {
+  grid-area: moreLink;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin: 0;
+}
+.prSite .content .pr .editLink ion-icon {
+  color: var(--accent-color4);
+  font-size: 2rem;
+}
+.prSite .content .lastUpdated {
+  grid-area: prUpdate;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  color: var(--text-color2);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.prSite .content .pr .prs {
+  grid-area: prContent;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin-top: 1em;
+}
+.prSite .content .pr .prs .prList {
+  grid-area: myViewer;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: calc(100% + 5vw);
+  margin-left: -5vw;
+  padding-left: 5vw;
+}
+.prSite .content .pr .prs .prList .prElem {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+  grid-template-areas:
+    "prExercise prValue"
+  ;
+  width: 100%;
+  height: 80px;
+  border-radius: 10px;
+  margin: 0.5em 0;
+  flex-shrink: 0;
+  box-shadow: 0px 5px var(--drop-shadow-opacity) var(--drop-shadow-color);
+  background-color: var(--main-color2);
+}
+.prSite .content .pr .prs .prList .prElem:first-child {
+  margin-top: 0;
+}
+.prSite .content .pr .prs .prList .prElem:last-child {
+  margin-bottom: 0;
+}
+.prSite .content .pr .prs .prList .prElem .prName {
+  grid-area: prExercise;
+  display: flex;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--text-color2);
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0;
+  margin-left: 0.8em;
+}
+.prSite .content .pr .prs .prList .prElem .prWeight {
+  grid-area: prValue;
+  display: flex;
+  height: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  /* color: var(--accent-color4); */
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0;
+  margin-right: 0.8em;
+}
+.prSite .content .pr .prs .prList .prElem:nth-child(1) .prWeight {
+  color: var(--accent-color1);
+}
+.prSite .content .pr .prs .prList .prElem:nth-child(2) .prWeight {
+  color: var(--accent-color2);
+}
+.prSite .content .pr .prs .prList .prElem:nth-child(3) .prWeight {
+  color: var(--accent-color3);
+}

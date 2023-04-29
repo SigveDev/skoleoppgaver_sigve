@@ -1,5 +1,4 @@
 import '../App.css';
-import background from "../img/background-gray.png";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -220,7 +219,6 @@ const Week = ({user}) => {
                     </div>}
                 </div>
             </div>
-            <img src={background} className="backgroundImage" alt="background" />
         </div>
     );
 }

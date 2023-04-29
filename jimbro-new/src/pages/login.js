@@ -1,6 +1,5 @@
 import '../App.css';
 import Google from '../img/google.png';
-import background from "../img/background-gray.png";
 
 const Login = () => {
     return (
@@ -17,7 +16,6 @@ const Login = () => {
                     </a>
                 </div>
             </div>
-            <img src={background} className="backgroundImage" alt="background" />
         </div>
     );
 }

@@ -33,6 +33,17 @@ router.get('/get/:name', async (req, res) => {
     }
 });
 
+//get a day from a week
+router.get('/get/:name/:day', async (req, res) => {
+    try {
+        let week = await Week.find({ weekName: req.params.name });
+        let day = week[0][req.params.day];
+        res.status(200).json(day);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 //update a week
 router.put('/update/:name', async (req, res) => {
     try {

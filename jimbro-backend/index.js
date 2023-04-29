@@ -35,7 +35,7 @@ app.use(passport.session());
 
 app.use(
     cors({
-        origin: "https://jimbro.fyi",
+        origin: "http://localhost:3000",
         methods: "GET,POST,PUT,DELETE",
         credentials: true
     })
@@ -46,6 +46,6 @@ app.use("/pr", prRoute);
 app.use("/plan", planRoute);
 app.use("/week", thisWeek);
 
-app.listen("25568", ()=>{
-    console.log("Server is running on port 25568!");
+app.listen("5000", ()=>{
+    console.log("Server is running on port 5000!");
 })

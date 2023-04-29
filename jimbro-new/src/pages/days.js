@@ -1,5 +1,4 @@
 import '../App.css';
-import background from "../img/background-gray.png";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -107,49 +106,7 @@ const DaySite = ({user}) => {
 
     return (
         <div className="daySite">
-            <div className="dayMain">
-                <a href="/" className="dayBack">
-                    <ion-icon name="close-outline" size="large"></ion-icon>
-                </a>
-                <button className="newDay" onClick={() => moreDays(dayCount)} title="Add New Day">
-                    <ion-icon name="add-circle-outline" size="large"></ion-icon>
-                </button>
-                <h1>Edit Days</h1>
-                <br />
-                {day === null ? <h2>Loading...</h2> : 
-                <form id="updateForm" method="GET" onSubmit={updateDays}>
-                    <div id="formContent">
-                    {day.days.map((days) => {
-                        dayCount++;
-                        let ownDayCount = dayCount;
-                        eval("globalThis.day" + dayCount + "Exercise" + " = " + "0");
-                        return (
-                            <div id={"dayDiv" + dayCount} className="formPortion">
-                                <label htmlFor={"day" + dayCount} id={"dayLabel" + dayCount}>Day:</label><br />
-                                <input type="text" className="name" id={"day" + dayCount} name={"day" + dayCount} placeholder="eks. Push" defaultValue={days.day} maxlength="10" />
-                                <button type="button" className="addExercise" onClick={() => moreExercise("dayDiv" + ownDayCount)} title="Add New Exercise"><ion-icon name="add-circle-outline" size="large"></ion-icon></button>
-                                {days !== day.days[0] ? <button type="button" id={"delete" + dayCount} className="deleteButton" onClick={() => deleteDay("dayDiv" + ownDayCount)} title="Delete Day"><ion-icon name="trash-outline" size="large"></ion-icon></button> : <br />}
-                                <br />
-                                {days.exercises.map((exercises) => {
-                                    eval("day" + ownDayCount + "Exercise" + "++");
-                                    exerciseCount++;
-                                    return (
-                                        <div id={"exerciseDiv" + dayCount + eval("day" + dayCount + "Exercise")}>
-                                            <label htmlFor={"exercise" + exerciseCount}>Exercise:</label><br />
-                                            <input type="text" className="subname" id={"exercise" + dayCount + eval("day" + dayCount + "Exercise")} name={"exercise" + exerciseCount} placeholder="eks. Deadlift 4x8" defaultValue={exercises.exercise} />
-                                            {days === day.days[0] && exercises === days.exercises[0] ? <br /> : <button type="button" id={"delete" + dayCount + eval("day" + dayCount + "Exercise")} className="deleteButton" onClick={() => deleteExercise("exerciseDiv" + ownDayCount + eval("day" + ownDayCount + "Exercise"), ownDayCount)} title="Delete Exercise"><ion-icon name="trash-outline" size="large"></ion-icon></button>}
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        );
-                    })}
-                    </div>
-                    <button type="submit" className="updateButton" title="Update">Update Days</button>
-                </form>
-                }
-            </div>
-            <img src={background} className="backgroundImage" alt="background" />
+            
         </div>
     );
 }

@@ -10,19 +10,19 @@ const Home = ({user}) => {
 
     useEffect(() => {
         const getPr = async () => {
-            const res = await axios.get("https://api.jimbro.fyi/pr/get/" + user.id, { withCredentials: true });
+            const res = await axios.get("http://localhost:5000/pr/get/" + user.id, { withCredentials: true });
             setPr(res.data[0]);
         };
         getPr();
 
         const getDay = async () => {
-            const res = await axios.get("https://api.jimbro.fyi/plan/get/" + user.id, { withCredentials: true });
+            const res = await axios.get("http://localhost:5000/plan/get/" + user.id, { withCredentials: true });
             setDay(res.data[0]);
         };
         getDay();
 
         const getWeek = async () => {
-            const res = await axios.get("https://api.jimbro.fyi/week/get/public", { withCredentials: true });
+            const res = await axios.get("http://localhost:5000/week/get/public", { withCredentials: true });
             setWeek(res.data[0]);
             setCorrectDay(week);
         };
@@ -49,7 +49,7 @@ const Home = ({user}) => {
             <div className="userName">
                 <img src={user.photos[0].value} alt="user pfp" className="userPFP"></img>
                 <h1 className="name">{user.displayName}</h1>
-                <a href="https://api.jimbro.fyi/auth/logout" className="logout">Logout</a>
+                <a href="http://localhost:5000/auth/logout" className="logout">Logout</a>
             </div>
             <div className="content">
                 <a href="/days" className="myDays">
