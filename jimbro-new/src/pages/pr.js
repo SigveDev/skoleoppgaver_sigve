@@ -27,15 +27,15 @@ const PrSite = ({user}) => {
                         <div className="prList">
                             <div className="prElem">
                                 <h3 className="prName">Bench</h3>
-                                <p className="prWeight">{pr.bench}</p>
+                                <p className="prWeight" id="benchValue">{pr.bench}</p>
                             </div>
                             <div className="prElem">
                                 <h3 className="prName">Deadlift</h3>
-                                <p className="prWeight">{pr.deadlift}</p>
+                                <p className="prWeight" id="deadliftValue">{pr.deadlift}</p>
                             </div>
                             <div className="prElem">
                                 <h3 className="prName">Squat</h3>
-                                <p className="prWeight">{pr.squat}</p>
+                                <p className="prWeight" id="squatValue">{pr.squat}</p>
                             </div>
                         </div>
                         )}

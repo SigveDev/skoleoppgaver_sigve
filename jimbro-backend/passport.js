@@ -5,16 +5,20 @@ const User = require('./models/user');
 const Pr = require('./models/pr');
 const Plan = require('./models/planer');
 
+//lar deg bruke .env filen
 dotenv.config();
 
 passport.use(new GoogleStrategy({
+    //henter inn clientID og clientSecret fra .env filen
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: "/auth/google/callback"
   },
-  async (accessToken, refreshToken, profile, done) => {
+  async (profile, done) => {
+    //sjekker om brukeren allerede finnes i databasen
     const oldUser = await User.findOne({ googleId: profile.id }).exec();
     if (!oldUser) {
+      //hvis brukeren ikke finnes, opprettes en ny bruker
       const newUser = new User({
         googleId: profile.id,
         name: profile.displayName,
@@ -22,6 +26,7 @@ passport.use(new GoogleStrategy({
       });
       newUser.save();
 
+      //oppretter blanke pr og planer for brukeren
       const blankPr = new Pr({
         googleId: profile.id,
         bench: "empty",
@@ -61,6 +66,7 @@ passport.use(new GoogleStrategy({
     } else {
       const updateName = await User.findOne({ name: profile.displayName }).exec();
 
+      //oppdaterer navn og profilbilde hvis brukeren har endret dette siden sist innlogging
       if (!updateName) {
         const updateName = await User.findOneAndUpdate({ googleId: profile.id }, {
           name: profile.displayName,

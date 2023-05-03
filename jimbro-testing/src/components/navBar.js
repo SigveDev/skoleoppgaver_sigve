@@ -1,3 +1,4 @@
+//Dette er en komponent som render navigasjonsbaren nederst på siden, og passer på at alle får samme styling, og at den aktive siden blir markert
 const NavBar = ({id}) => {
     switch (id) {
         case "home":

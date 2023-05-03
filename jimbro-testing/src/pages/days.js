@@ -8,6 +8,7 @@ const DaySite = ({user}) => {
     const [listId, setListId] = useState(null);
 
     useEffect(() => {
+        //Får en brukers planr med axios og setter den i state
         const getDay = async () => {
             const res = await axios.get("http://localhost:5000/plan/get/" + user.id, { withCredentials: true });
             setDay(res.data[0]);
@@ -15,6 +16,7 @@ const DaySite = ({user}) => {
         getDay();
     }, []);
 
+    //en funksjon som tar inn en id og ekspanderer den dagen som har den id'en og kollapser alle andre
     const expand = (id) => {
         if(listId !== id) {
             let elem = document.getElementById("dayElem" + id);

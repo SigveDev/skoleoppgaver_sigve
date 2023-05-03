@@ -16,6 +16,7 @@ const Home = ({user}) => {
         };
         getAllWeek();
 
+        //Setter riktig dag som dagens dag og setter den til å være aktiv
         const setCorrectDay = () => {
             if(canRun) return;
             let today = new Date();
@@ -28,10 +29,11 @@ const Home = ({user}) => {
             element.style.color = "white";
             element.scrollIntoView({behavior: "smooth", block: "end", inline: "center"});
             setCanRun(true);
-            return;
+            return dayName;
         }
         setCorrectDay();
 
+        //Får en brukers planer i følge hvilken dag det er med axios og setter den i state
         if(today) {
             const getWeek = async () => {
                 const res = await axios.get("http://localhost:5000/week/get/public/" + today, { withCredentials: true });
@@ -41,6 +43,7 @@ const Home = ({user}) => {
         }
     }, [today]);
 
+    //lar brukeren endre hvilken dag som skal bli vist og setter den til å være aktiv
     const changeDay = (day, id) => {
         setToday(day);
         const dayList = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday" ];
@@ -56,6 +59,7 @@ const Home = ({user}) => {
         setCanRun(true);
     }
 
+    //Sletter en plan med axios og oppdaterer siden
     const deletePlan = async (day, id) => {
         console.log(day + " " + id);
         const res = await axios.put("http://localhost:5000/week/remove/public/" + day + "/" + id, { withCredentials: true });
@@ -97,6 +101,7 @@ const Home = ({user}) => {
                             <p>Loading...</p>
                         ) : (
                             <div className="dayList">
+                                {/*Render inn alle planene for den dagen*/}
                                 {week.map((plan, index) => (
                                     <div className="dayPlan" key={index}>
                                         <img src={plan.ownerPfp} alt="owner pfp" className="daypfp"/>
@@ -123,6 +128,7 @@ const Home = ({user}) => {
                             <p>Loading...</p>
                         ) : (
                             <div className="myDayList">
+                                {/*Render inn alle brukerens planer for mandag*/}
                                 {allWeek.monday.map((plan, index) => (
                                     <div key={index}>
                                     {plan.ownerId === user.id ? (
@@ -139,6 +145,7 @@ const Home = ({user}) => {
                                     )}
                                     </div>
                                 ))}
+                                {/*Render inn alle brukerens planer for tirsdag*/}
                                 {allWeek.tuesday.map((plan, index) => (
                                     <div key={index}>
                                     {plan.ownerId === user.id ? (
@@ -155,6 +162,7 @@ const Home = ({user}) => {
                                     )}
                                     </div>
                                 ))}
+                                {/*Render inn alle brukerens planer for onsdag*/}
                                 {allWeek.wednesday.map((plan, index) => (
                                     <div key={index}>
                                     {plan.ownerId === user.id ? (
@@ -171,6 +179,7 @@ const Home = ({user}) => {
                                     )}
                                     </div>
                                 ))}
+                                {/*Render inn alle brukerens planer for torsdag*/}
                                 {allWeek.thursday.map((plan, index) => (
                                     <div key={index}>
                                     {plan.ownerId === user.id ? (
@@ -187,6 +196,7 @@ const Home = ({user}) => {
                                     )}
                                     </div>
                                 ))}
+                                {/*Render inn alle brukerens planer for fredag*/}
                                 {allWeek.friday.map((plan, index) => (
                                     <div key={index}>
                                     {plan.ownerId === user.id ? (
@@ -203,6 +213,7 @@ const Home = ({user}) => {
                                     )}
                                     </div>
                                 ))}
+                                {/*Render inn alle brukerens planer for lørdag*/}
                                 {allWeek.saturday.map((plan, index) => (
                                     <div key={index}>
                                     {plan.ownerId === user.id ? (
@@ -219,6 +230,7 @@ const Home = ({user}) => {
                                     )}
                                     </div>
                                 ))}
+                                {/*Render inn alle brukerens planer for søndag*/}
                                 {allWeek.sunday.map((plan, index) => (
                                     <div key={index}>
                                     {plan.ownerId === user.id ? (

@@ -5,28 +5,26 @@ import BackButton from '../components/backButton';
 
 const NewPlan = ({user}) => {
     const [day, setDay] = useState(null);
-    const [week, setWeek] = useState(null);
 
+    //setter opp en liste med alle timene og minuttene man kan velge mellom
     const hours = 24;
     const minutes = ["00", "15", "30", "45"];
 
     useEffect(() => {
+        //Får en brukers planer med axios og setter den i state
         const getDay = async () => {
             const res = await axios.get("http://localhost:5000/plan/get/" + user.id, { withCredentials: true });
             setDay(res.data[0].days);
         };
         getDay();
-
-        const getWeek = async () => {
-            const res = await axios.get("http://localhost:5000/week/get/public", { withCredentials: true });
-            setWeek(res.data[0]);
-        };
-        getWeek();
     }, []);
 
+    //henter all dataen fra inputfeltene og sender det til backenden
     const postNewPlan = async (e) => {
+        // e.preventDefault(); forhinder at siden refresher seg når man trykker på submit
         e.preventDefault();
 
+        //henter all dataen fra inputfeltene
         const hour = document.querySelector(".hour").value;
         const minute = document.querySelector(".minute").value;
         const whichDay = document.querySelector(".whichDay").value;
@@ -34,16 +32,19 @@ const NewPlan = ({user}) => {
         const where = document.querySelector(".where").value;
         const howMany = document.querySelector(".howMany").value;
 
-        console.log(hour + ":" + minute + " " + whichDay + " " + plan);
+        //henter alle planene som allerede er lagt ut
+        const res = await axios.get("http://localhost:5000/week/get/public", { withCredentials: true });
 
-        const newMonday = week.monday;
-        const newTuesday = week.tuesday;
-        const newWednesday = week.wednesday;
-        const newThursday = week.thursday;
-        const newFriday = week.friday;
-        const newSaturday = week.saturday;
-        const newSunday = week.sunday;
+        //setter alle planene inn i variabler
+        const newMonday = res.data[0].monday;
+        const newTuesday = res.data[0].tuesday;
+        const newWednesday = res.data[0].wednesday;
+        const newThursday = res.data[0].thursday;
+        const newFriday = res.data[0].friday;
+        const newSaturday = res.data[0].saturday;
+        const newSunday = res.data[0].sunday;
 
+        //sjekker hvilken dag som er valgt og legger til planen i riktig array
         if(whichDay === "monday") {
             newMonday.push({
                 ownerId: user.id,
@@ -116,6 +117,7 @@ const NewPlan = ({user}) => {
             });
         }
 
+        //sender alle planene til backenden
         try {
             const res = await axios.put("http://localhost:5000/week/update/public", {
                 monday: newMonday,
@@ -130,6 +132,7 @@ const NewPlan = ({user}) => {
         } catch(err) {
             console.log(err);
         }
+        //sender brukeren tilbake til forsiden
         window.location.href = "/";
     }
 
@@ -138,6 +141,7 @@ const NewPlan = ({user}) => {
             <div className="content">
                 <BackButton whereTo="/" />
                 <div className="planSiteCreate">
+                    {/*Sjekker om den her fått dataen fra backenden før den viser content*/}
                     {day === null ? <h1 className="noPlan">Loading...</h1> : 
                     <form className="planForm" onSubmit={postNewPlan}>
                         <h3 className="dayLabel">Day:</h3>
@@ -152,12 +156,14 @@ const NewPlan = ({user}) => {
                         </select>
                         <h3 className="timeLabel">Time:</h3>
                         <select className="hour">
+                            {/*kjører gjennom 24 ganger og setter det som et alternativ*/}
                             {Array.from(Array(hours).keys()).map((hour, index) => (
                                 <option value={hour} key={index}>{hour}</option>
                             ))}
                         </select>
                         <span className="spacerTime">:</span>
                         <select className="minute">
+                            {/*kjører gjennom minutes arrayen og setter det som alternativer*/}
                             {minutes.map((minute, index) => (
                                 <option value={minute} key={index}>{minute}</option>
                             ))}
@@ -166,6 +172,7 @@ const NewPlan = ({user}) => {
                         <input type="text" className="where" placeholder="Where?" />
                         <h3 className="planLabel">Plan:</h3>
                         <select className="plan">
+                            {/*kjører gjennom plan arrayen og setter det som alternativer*/}
                             {day.map((days, index) => (
                                 <option value={days.day} key={index}>{days.day}</option>
                             ))}

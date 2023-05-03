@@ -11,9 +11,12 @@ const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
+//setter opp for bruk av .env filen
 dotenv.config();
+//setter opp for bruk av json
 app.use(express.json());
 
+//kobler til mongoDB
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -22,6 +25,7 @@ mongoose.connect(process.env.MONGO_URL, {
     .then(console.log("Connectet to mongoDB"))
     .catch((err) => console.log(err));
 
+//setter opp for bruk av cookies
 app.use(cookieSession(
     {
         name:"user-data",
@@ -33,19 +37,22 @@ app.use(cookieSession(
 app.use(passport.initialize());
 app.use(passport.session());
 
+//setter opp for bruk av cors og hvilet domene som kan bruke serveren
 app.use(
     cors({
-        origin: "https://jimbro.fyi",
+        origin: "http://localhost:3000",
         methods: "GET,POST,PUT,DELETE",
         credentials: true
     })
 );
 
+//setter opp for bruk av routes
 app.use("/auth", authRoute);
 app.use("/pr", prRoute);
 app.use("/plan", planRoute);
 app.use("/week", thisWeek);
 
-app.listen("25568", ()=>{
-    console.log("Server is running on port 25568!");
+//starter serveren
+app.listen("5000", ()=>{
+    console.log("Server is running on port 5000!");
 })

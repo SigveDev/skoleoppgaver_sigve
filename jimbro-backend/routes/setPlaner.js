@@ -6,6 +6,7 @@ router.post('/create/:id', async (req, res) => {
     try {
         let tempDays = [];
 
+        //looper gjennom alle dagene og legger de til i tempDays
         for (let i = 0; i < req.body.days.Length; i++) {
             tempDays.push({
                 day: req.body.days[i].day,
@@ -13,6 +14,7 @@ router.post('/create/:id', async (req, res) => {
             });
         }
 
+        //lagrer tempdays i databasen som en plan
         const newPr = new Plan({
             googleId: req.params.id,
             days: tempDays,
@@ -27,6 +29,7 @@ router.post('/create/:id', async (req, res) => {
 //get plans
 router.get('/get/:id', async (req, res) => {
     try {
+        //finner planen til brukeren
         let day = await Plan.find({ googleId: req.params.id });
         res.status(200).json(day);
     } catch (err) {
@@ -39,8 +42,10 @@ router.put('/update/:id', async (req, res) => {
     try {
         let plan = await Plan.find({ googleId: req.params.id });
 
+        //sjekker om url id og googleId er like
         if (plan[0].googleId === req.body.googleId) {
             try {
+                //oppdaterer planen i databasen
                 const updatePlan = await Plan.findOneAndUpdate({ googleId: req.params.id }, {
                     days: req.body.days,
                 }, { new: true });

@@ -9,6 +9,7 @@ const EditDays = ({user}) => {
     let exerciseCount = 0;
 
     useEffect(() => {
+        //Får en brukers planer med axios og setter den i state
         const getDay = async () => {
             const res = await axios.get("http://localhost:5000/plan/get/" + user.id, { withCredentials: true });
             setDay(res.data[0]);
@@ -16,15 +17,19 @@ const EditDays = ({user}) => {
         getDay();
     }, []);
 
+    //Funksjonen som setter om en json og putter inn dataen fra input feltene og sender det til databasen
     const updateDays = async (e) => {
+        // e.preventDefault(); er fro å gjøre at formet ikke refresher siden før daten er sendt
         e.preventDefault();
 
         let days = [];
+        //looper fro antall dager som er lagt til
         for (let i = 1; i <= dayCount; i++) {
             let exercises = [];
             if(document.getElementById("day" + i) === null || document.getElementById("day" + i).value === "") {
                 continue;
             }
+            //og looper for antall øvelser som er lagt til hver dag
             for (let j = 1; j <= eval("day" + i + "Exercise"); j++) {
                 if (document.getElementById("exercise" + i + j) === null || document.getElementById("exercise" + i + j).value === "") {
                     continue;
@@ -34,6 +39,7 @@ const EditDays = ({user}) => {
                     });
                 }
             }
+            //legger til dagene i en json
             days.push({
                 day: document.getElementById("day" + i).value,
                 exercises: exercises
@@ -41,14 +47,17 @@ const EditDays = ({user}) => {
         }
 
         try {
+            //sender jsonen til databasen
             const res = await axios.put("http://localhost:5000/plan/update/" + user.id, {
                 googleId: user.id,
                 days: days
             }, { withCredentials: true });
         } catch (err) {console.log(err)}
+        //sender brukeren tilbake til days siden
         window.open("/days", "_self");
     }
 
+    //Funksjonen som legger til en ny dag
     const moreDays = (myDayCount) => {
         document.getElementById("formContent").insertAdjacentHTML('beforeend', `
             <div id="dayDiv${dayCount + 1}" class="formPortion">
@@ -69,6 +78,7 @@ const EditDays = ({user}) => {
         dayCount++;
     }
 
+    //Funksjonen som legger til en ny øvelse innefor en dag
     const moreExercise = (id) => {
         let myDayCount = id.split("Div");
         eval(myDayCount[0] + myDayCount[1] + "Exercise" + "++");
@@ -84,6 +94,7 @@ const EditDays = ({user}) => {
         exerciseCount++;
     }
 
+    //Funksjonen som sletter en dag
     const deleteDay = (id) => {
         document.getElementById(id).remove();
         let myDayCount = id.split("Div");
@@ -91,6 +102,7 @@ const EditDays = ({user}) => {
         eval(myDayCount[0] + myDayCount[1] + "Exercise" + " = " + "0");
     }
 
+    //Funksjonen som sletter en øvelse
     const deleteExercise = (id, name) => {
         console.log("which day is this taken from: " + name + " and which exercise is this: " + id);
         document.getElementById(id).remove();
@@ -106,17 +118,23 @@ const EditDays = ({user}) => {
                 <div className="editDayContent">
                     <form id="updateForm" method="GET" onSubmit={updateDays}>
                         <div id="formContent">
+                        {/*den mapper alle dagene som den får fra axios og lager et input felt og vidre øvelsene innefor den dagen,
+                        Kunne nok ha gjort dette med en component, men kunne ikek så mye om react på starten så dette var det det endte
+                        opp med, skulle jeg gjort det igjen ville jeg ha brukt components*/}
                         {day.days.map((days, index) => {
                             dayCount++;
                             let ownDayCount = dayCount;
+                            //eval er en måte å bruke variabler for å definere variabelnavn, dette var essensielt i denne funksjonen for å kunne ha variabelnavn som passet med dagene og øvelsene
                             eval("globalThis.day" + dayCount + "Exercise" + " = " + "0");
                             return (
                                 <div id={"dayDiv" + dayCount} className="formPortion" key={index}>
                                     <label htmlFor={"day" + dayCount} id={"dayLabel" + dayCount}>Day:</label><br />
                                     <input type="text" className="name" id={"day" + dayCount} name={"day" + dayCount} placeholder="eks. Push" defaultValue={days.day} maxLength="10" />
                                     <button type="button" className="addExercise" onClick={() => moreExercise("dayDiv" + ownDayCount)} title="Add New Exercise"><ion-icon name="add-circle-outline" size="large"></ion-icon></button>
+                                    {/*Sjekker om det er den føste dagen, om det er det skal den ikke rendre en delete knapp*/}
                                     {days !== day.days[0] ? <button type="button" id={"delete" + dayCount} className="deleteButton" onClick={() => deleteDay("dayDiv" + ownDayCount)} title="Delete Day"><ion-icon name="trash-outline" size="large"></ion-icon></button> : <></>}
                                     <br /><br />
+                                    {/*Looper over antall øvelser innenfor den dagen og spytter ut et input felt + litt til, per øvelse*/}
                                     {days.exercises.map((exercises, index) => {
                                         eval("day" + ownDayCount + "Exercise" + "++");
                                         exerciseCount++;
@@ -124,6 +142,7 @@ const EditDays = ({user}) => {
                                             <div id={"exerciseDiv" + dayCount + eval("day" + dayCount + "Exercise")} key={index}>
                                                 <label htmlFor={"exercise" + exerciseCount}>Exercise:</label><br />
                                                 <input type="text" className="subname" id={"exercise" + dayCount + eval("day" + dayCount + "Exercise")} name={"exercise" + exerciseCount} placeholder="eks. Deadlift 4x8" defaultValue={exercises.exercise} />
+                                                {/*Sjekker om det er den første dagen og den føste øvelsen, om det er det skal det ikke rendres en slette knapp*/}
                                                 {days === day.days[0] && exercises === days.exercises[0] ? <></> : <button type="button" id={"delete" + dayCount + eval("day" + dayCount + "Exercise")} className="deleteButton" onClick={() => deleteExercise("exerciseDiv" + ownDayCount + eval("day" + ownDayCount + "Exercise"), ownDayCount)} title="Delete Exercise"><ion-icon name="trash-outline" size="large"></ion-icon></button>}
                                                 <br /><br />
                                             </div>

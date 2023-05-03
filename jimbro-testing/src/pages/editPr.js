@@ -5,8 +5,10 @@ import BackButton from '../components/backButton';
 const EditPr = ({user}) => {
 
     const updatePr = async (e) => {
+        // e.preventDefault(); forhinderer at siden refresher etter submit
         e.preventDefault();
         try {
+            //sender en put request til serveren med dataen som er skrevet inn i formen
             const res = await axios.put("http://localhost:5000/pr/update/" + user.id, {
                 googleId: user.id,
                 bench: document.getElementById("bench").value,
@@ -14,6 +16,7 @@ const EditPr = ({user}) => {
                 squat: document.getElementById("squat").value
             }, { withCredentials: true });
         } catch (err) {}
+        //sender brukeren tilbake til pr siden
         window.open("/pr", "_self");
     }
 

@@ -1,3 +1,4 @@
+//passer på at alle får samme styling
 const UserName = ({user}) => {
     return (
         <div className="userName">
