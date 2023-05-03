@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import NavBar from '../components/navBar';
 import UserName from '../components/userName';
 
@@ -7,11 +7,8 @@ const PrSite = ({user}) => {
     const [pr, setPr] = useState(null);
 
     useEffect(() => {
-        const getPr = async () => {
-            const res = await axios.get("https://api.jimbro.fyi/pr/get/" + user.id, { withCredentials: true });
-            setPr(res.data[0]);
-        };
-        getPr();
+        axios.get("http://localhost:5000/pr/get/" + user.id, { withCredentials: true })
+        .then(res => setPr(res.data));
     }, []);
 
     return (
@@ -27,11 +24,11 @@ const PrSite = ({user}) => {
                         <div className="prList">
                             <div className="prElem">
                                 <h3 className="prName">Bench</h3>
-                                <p className="prWeight">{pr.bench}</p>
+                                <p className="prWeight" data-testid="pr-1">{pr.bench}</p>
                             </div>
                             <div className="prElem">
                                 <h3 className="prName">Deadlift</h3>
-                                <p className="prWeight">{pr.deadlift}</p>
+                                <p className="prWeight" data-testid="pr-1">{pr.deadlift}</p>
                             </div>
                             <div className="prElem">
                                 <h3 className="prName">Squat</h3>

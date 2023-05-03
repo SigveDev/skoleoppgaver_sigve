@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from "axios";
+import axios from 'axios';
 import NavBar from '../components/navBar';
 import UserName from '../components/userName';
 
@@ -11,7 +11,7 @@ const Home = ({user}) => {
 
     useEffect(() => {
         const getAllWeek = async () => {
-            const res = await axios.get("https://api.jimbro.fyi/week/get/public", { withCredentials: true });
+            const res = await axios.get("http://localhost:5000/week/get/public", { withCredentials: true });
             setAllWeek(res.data[0]);
         };
         getAllWeek();
@@ -34,7 +34,7 @@ const Home = ({user}) => {
 
         if(today) {
             const getWeek = async () => {
-                const res = await axios.get("https://api.jimbro.fyi/week/get/public/" + today, { withCredentials: true });
+                const res = await axios.get("http://localhost:5000/week/get/public/" + today, { withCredentials: true });
                 setWeek(res.data);
             };
             getWeek();
@@ -58,7 +58,7 @@ const Home = ({user}) => {
 
     const deletePlan = async (day, id) => {
         console.log(day + " " + id);
-        const res = await axios.put("https://api.jimbro.fyi/week/remove/public/" + day + "/" + id, { withCredentials: true });
+        const res = await axios.put("http://localhost:5000/week/remove/public/" + day + "/" + id, { withCredentials: true });
         window.location.reload();
     }
 
