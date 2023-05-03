@@ -8,7 +8,7 @@ const PrSite = ({user}) => {
 
     useEffect(() => {
         const getPr = async () => {
-            const res = await axios.get("http://localhost:5000/pr/get/" + user.id, { withCredentials: true });
+            const res = await axios.get("https://api.jimbro.fyi/pr/get/" + user.id, { withCredentials: true });
             setPr(res.data[0]);
         };
         getPr();

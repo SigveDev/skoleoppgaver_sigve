@@ -12,13 +12,13 @@ const NewPlan = ({user}) => {
 
     useEffect(() => {
         const getDay = async () => {
-            const res = await axios.get("http://localhost:5000/plan/get/" + user.id, { withCredentials: true });
+            const res = await axios.get("https://api.jimbro.fyi/plan/get/" + user.id, { withCredentials: true });
             setDay(res.data[0].days);
         };
         getDay();
 
         const getWeek = async () => {
-            const res = await axios.get("http://localhost:5000/week/get/public", { withCredentials: true });
+            const res = await axios.get("https://api.jimbro.fyi/week/get/public", { withCredentials: true });
             setWeek(res.data[0]);
         };
         getWeek();
@@ -117,7 +117,7 @@ const NewPlan = ({user}) => {
         }
 
         try {
-            const res = await axios.put("http://localhost:5000/week/update/public", {
+            const res = await axios.put("https://api.jimbro.fyi/week/update/public", {
                 monday: newMonday,
                 tuesday: newTuesday,
                 wednesday: newWednesday,
