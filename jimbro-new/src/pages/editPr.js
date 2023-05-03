@@ -7,7 +7,7 @@ const EditPr = ({user}) => {
     const updatePr = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.put("https://api.jimbro.fyi/pr/update/" + user.id, {
+            const res = await axios.put("http://localhost:5000/pr/update/" + user.id, {
                 googleId: user.id,
                 bench: document.getElementById("bench").value,
                 deadlift: document.getElementById("deadlift").value,

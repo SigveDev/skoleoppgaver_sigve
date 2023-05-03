@@ -8,7 +8,7 @@ const Login = () => {
                 </div>
                 <div className="loginBox">
                     <h1 className="loginTitle">Login</h1><br /><br />
-                    <a href="https://api.jimbro.fyi/auth/google" className="loginBtn"><img src={Google} alt="Google Logo" className="googleLogo" />Login with Google</a>
+                    <a href="http://localhost:5000/auth/google" className="loginBtn"><img src={Google} alt="Google Logo" className="googleLogo" />Login with Google</a>
                 </div>
             </div>
         </div>

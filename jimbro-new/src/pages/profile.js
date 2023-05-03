@@ -12,7 +12,7 @@ const Profile = ({user}) => {
                     <h1 className="userName">{user.displayName}</h1>
                 </div>
                 <div className="profileMain">
-                    <a href="https://api.jimbro.fyi/auth/logout" className="logout">Logout</a>
+                    <a href="http://localhost:5000/auth/logout" className="logout">Logout</a>
                 </div>
                 <NavBar id="profile"/>
             </div>

@@ -10,7 +10,7 @@ const EditDays = ({user}) => {
 
     useEffect(() => {
         const getDay = async () => {
-            const res = await axios.get("https://api.jimbro.fyi/plan/get/" + user.id, { withCredentials: true });
+            const res = await axios.get("http://localhost:5000/plan/get/" + user.id, { withCredentials: true });
             setDay(res.data[0]);
         };
         getDay();
@@ -41,7 +41,7 @@ const EditDays = ({user}) => {
         }
 
         try {
-            const res = await axios.put("https://api.jimbro.fyi/plan/update/" + user.id, {
+            const res = await axios.put("http://localhost:5000/plan/update/" + user.id, {
                 googleId: user.id,
                 days: days
             }, { withCredentials: true });
