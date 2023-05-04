@@ -14,7 +14,7 @@ passport.use(new GoogleStrategy({
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: "/auth/google/callback"
   },
-  async (profile, done) => {
+  async (accessToken, refreshToken, profile, done) => {
     //sjekker om brukeren allerede finnes i databasen
     const oldUser = await User.findOne({ googleId: profile.id }).exec();
     if (!oldUser) {
