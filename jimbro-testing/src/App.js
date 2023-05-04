@@ -36,6 +36,7 @@ function App() {
         <Route path="/edit-days" element={user ? <EditDays user={user} /> : <PleaseLogin />} />
         <Route path="/edit-pr" element={user ? <EditPr user={user} /> : <PleaseLogin />} />
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+        {/*Router alle andre til error 404 siden*/}
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
