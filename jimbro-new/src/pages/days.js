@@ -31,7 +31,7 @@ const DaySite = ({user}) => {
 
             button.style.rotate = "-90deg";
 
-            elem.scrollIntoView({behavior: "smooth", block: "start"});
+            //elem.scrollIntoView({behavior: "smooth", block: "start"});
 
             for(let i = 0; i < day.days.length; i++) {
                 if (i === id) {

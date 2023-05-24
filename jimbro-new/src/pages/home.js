@@ -26,7 +26,7 @@ const Home = ({user}) => {
             const element = document.getElementsByClassName(dayName)[0];
             element.style.backgroundColor = "#3665F7";
             element.style.color = "white";
-            element.scrollIntoView({behavior: "smooth", block: "end", inline: "center"});
+            //element.scrollIntoView({behavior: "smooth", block: "end", inline: "center"});
             setCanRun(true);
             return;
         }
@@ -52,7 +52,7 @@ const Home = ({user}) => {
         let element = document.getElementsByClassName("day")[id];
         element.style.backgroundColor = "#3665F7";
         element.style.color = "white";
-        element.scrollIntoView({behavior: "smooth", block: "end", inline: "center"});
+        //element.scrollIntoView({behavior: "smooth", block: "end", inline: "center"});
         setCanRun(true);
     }
 
