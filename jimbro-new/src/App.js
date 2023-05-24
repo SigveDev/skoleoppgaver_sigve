@@ -22,7 +22,7 @@ function App() {
       setUser(res.data.user);
     };
     getUser();
-  }, []);
+  }, [user]);
 
   return (
     <BrowserRouter>
