@@ -26,7 +26,7 @@ const Order = ({ user }) => {
                 <h1>Dine ordre</h1>
                 {orders ?
                 <div className="order-content-grid">
-                    {orders.map((order) => (
+                    {orders.slice(0).reverse().map((order) => (
                         <div className="order-content-grid-item">
                             <h2>Ordre #{order._id}</h2>
                             <p>Produkter:</p>
