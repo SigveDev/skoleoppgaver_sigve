@@ -1,0 +1,42 @@
+import axios from "axios";
+import Header from "../components/header";
+import Footer from "../components/footer";
+
+const Login = () => {
+
+    const login = async (e) => {
+        e.preventDefault();
+        try {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('pass').value;
+            const response = await axios.get('http://localhost:5000/user/login/' + email + "/" + password, {Credentials: true });
+            console.log(response);
+            if(response.status === 200) {
+                localStorage.setItem('user', JSON.stringify(response.data.accessToken));
+                let now = new Date();
+                localStorage.setItem('ttl', JSON.stringify(now.getTime() + (86400000 * 7)));
+                window.location.replace('http://localhost:3000/profile');
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    return (
+        <div className="login">
+            <Header active="login" />
+            <div className="login-content">
+                <h1>Logg inn</h1>
+                <form onSubmit={login}>
+                    <input type="email" id="email" placeholder="E-post" required />
+                    <input type="password" id="pass" placeholder="Passord" required />
+                    <p>Don't have an account? <a href="/register">Register</a></p>
+                    <input type="submit" className="btn" value="Logg Inn" />
+                </form>
+            </div>
+            <Footer />
+        </div>
+    );
+};
+
+export default Login;
