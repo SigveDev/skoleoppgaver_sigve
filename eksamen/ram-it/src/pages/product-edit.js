@@ -30,7 +30,7 @@ const ProductEdit = ({ user }) => {
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/product/find/" + id);
+                const res = await axios.get("https://ramit-api.sigve.dev/product/find/" + id);
                 setProduct(res.data);
             } catch (err) {
                 console.log(err);
@@ -47,7 +47,7 @@ const ProductEdit = ({ user }) => {
 
     const deleteProduct = async () => {
         try {
-            const res = await axios.delete("http://localhost:5000/product/delete/" + id);
+            const res = await axios.delete("https://ramit-api.sigve.dev/product/delete/" + id);
             window.location.replace("/dashboard");
         } catch (err) {
             console.log(err);
@@ -72,7 +72,7 @@ const ProductEdit = ({ user }) => {
             const data = new FormData();
             data.append("image", file);
             const res = await axios.post(
-                "http://localhost:5000/upload",
+                "https://ramit-api.sigve.dev/upload",
                 data
             );
             console.log(res.data.file);
@@ -81,7 +81,7 @@ const ProductEdit = ({ user }) => {
             newProduct.image = product.image;
         }
         try {
-            await axios.put("http://localhost:5000/product/update/" + id, newProduct);
+            await axios.put("https://ramit-api.sigve.dev/product/update/" + id, newProduct);
             window.location.replace("/dashboard");
         }
         catch (err) {
@@ -99,7 +99,7 @@ const ProductEdit = ({ user }) => {
                     <div className="edit-product-content-horizontal">
                         <div className="edit-product-content-left">
                             <input type="file" onChange={handleFileChange} accept="image/png, image/jpg, image/jpeg, image/gif" />
-                            {imageUrl ? <img src={imageUrl} alt="Uploaded file" className="uploadedImg" /> : <img src={"http://localhost:5000/uploads/" + product.image} alt="Uploaded file" className="uploadedImg" />}
+                            {imageUrl ? <img src={imageUrl} alt="Uploaded file" className="uploadedImg" /> : <img src={"https://ramit-api.sigve.dev/uploads/" + product.image} alt="Uploaded file" className="uploadedImg" />}
                         </div>
                         <div className="edit-product-content-right">
                             <label htmlFor="title">Tittel</label>

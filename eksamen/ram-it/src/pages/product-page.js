@@ -12,7 +12,7 @@ const ProductPage = (user) => {
     useEffect(() => {
         const getProduct = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/product/find/" + id);
+            const res = await axios.get("https://ramit-api.sigve.dev/product/find/" + id);
             setProduct(res.data);
         } catch (err) {
             console.log(err);
@@ -22,7 +22,7 @@ const ProductPage = (user) => {
 
         const getCart = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/cart/find/" + user.user.id);
+                const res = await axios.get("https://ramit-api.sigve.dev/cart/find/" + user.user.id);
                 setCart(res.data[0].items);
             } catch (err) {
                 console.log(err);
@@ -33,7 +33,7 @@ const ProductPage = (user) => {
 
     const addCart = async () => {
         try {
-            const oldCart = await axios.get("http://localhost:5000/cart/find/" + user.user.id);
+            const oldCart = await axios.get("https://ramit-api.sigve.dev/cart/find/" + user.user.id);
             let newItems = oldCart.data[0].items;
             const thisProduct = {
                 id: product._id,
@@ -46,7 +46,7 @@ const ProductPage = (user) => {
             const newCart = {
                 items: newItems
             };
-            await axios.put("http://localhost:5000/cart/update/" + user.user.id, newCart);
+            await axios.put("https://ramit-api.sigve.dev/cart/update/" + user.user.id, newCart);
             window.location.reload();
         } catch (err) {
             console.log(err);
@@ -58,7 +58,7 @@ const ProductPage = (user) => {
             <Header active="none" />
             <div className="product-page-content">
                 <div className="product-page-content-left">
-                    <img src={"http://localhost:5000/uploads/" + product.image} alt={product.title} />
+                    <img src={"https://ramit-api.sigve.dev/uploads/" + product.image} alt={product.title} />
                 </div>
                 <div className="product-page-content-right">
                     <h1>{product.title}</h1>

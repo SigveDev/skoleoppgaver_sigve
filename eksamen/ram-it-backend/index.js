@@ -28,7 +28,7 @@ mongoose.connect(process.env.MONGO_URL, {
 //setter opp for bruk av cors og hvilet domene som kan bruke serveren
 app.use(
     cors({
-        origin: "http://localhost:3000",
+        origin: "https://ramit.sigve.dev",
         methods: "GET,POST,PUT,DELETE",
         credentials: true
     })
@@ -80,6 +80,6 @@ app.use("/cart", cartRoute);
 app.use("/order", orderRoute);
 
 //starter serveren
-app.listen("5000", ()=>{
-    console.log("Server is running on port 5000!");
+app.listen("25581", ()=>{
+    console.log("Server is running on port 25581!");
 })

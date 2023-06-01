@@ -9,13 +9,13 @@ const Login = () => {
         try {
             const email = document.getElementById('email').value;
             const password = document.getElementById('pass').value;
-            const response = await axios.get('http://localhost:5000/user/login/' + email + "/" + password, {Credentials: true });
+            const response = await axios.get('https://ramit-api.sigve.dev/user/login/' + email + "/" + password, {Credentials: true });
             console.log(response);
             if(response.status === 200) {
                 localStorage.setItem('user', JSON.stringify(response.data.accessToken));
                 let now = new Date();
                 localStorage.setItem('ttl', JSON.stringify(now.getTime() + (86400000 * 7)));
-                window.location.replace('http://localhost:3000/profile');
+                window.location.replace('https://ramit.sigve.dev/profile');
             }
         } catch (err) {
             console.log(err);

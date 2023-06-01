@@ -12,7 +12,7 @@ const Dashboard = ({ user }) => {
     useEffect(() => {
         const getOrders = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/order/all`);
+                const res = await axios.get(`https://ramit-api.sigve.dev/order/all`);
                 setOrders(res.data);
             } catch (err) {
                 console.log(err);
@@ -22,7 +22,7 @@ const Dashboard = ({ user }) => {
 
         const getProducts = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/product/all');
+                const res = await axios.get('https://ramit-api.sigve.dev/product/all');
                 setProducts(res.data);
             } catch (err) {
                 console.log(err);
