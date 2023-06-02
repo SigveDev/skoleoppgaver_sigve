@@ -1,36 +1,41 @@
 import Header from "../components/header";
 import Footer from "../components/footer";
 import axios from "axios";
+import { useState } from "react";
 
 const Register = () => {
+    const [status, setStatus] = useState(200);
 
     const register = async (e) => {
-        e.preventDefault();
-        if(document.getElementById('pass').value !== document.getElementById('pass2').value) {
-            alert('Passwords do not match!');
-            return;
-        }
+        try {
+            e.preventDefault();
+            if(document.getElementById('pass').value !== document.getElementById('pass2').value) {
+                setStatus(400);
+                return;
+            }
 
-        const response = await axios.post('https://ramit-api.sigve.dev/user/register', {
-            firstname: document.getElementById('fname').value,
-            lastname: document.getElementById('lname').value,
-            email: document.getElementById('email').value,
-            password: document.getElementById('pass').value,
-            isAdmin: false
-        });
-        console.log(response);
-        if(response.status === 200) {
-            const res = await axios.post("https://ramit-api.sigve.dev/cart/create", {
-                userId: response.data.user._id,
-                total: 0,
-                items: []
-            })
-            localStorage.setItem('user', JSON.stringify(response.data.accessToken));
-            let now = new Date();
-            localStorage.setItem('ttl', JSON.stringify(now.getTime() + (86400000 * 7)));
-            window.location.replace('https://ramit.sigve.dev/');
-        } else {
-            alert('There was an error registering your account.');
+            const response = await axios.post('https://ramit-api.sigve.dev/user/register', {
+                firstname: document.getElementById('fname').value,
+                lastname: document.getElementById('lname').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('pass').value,
+                isAdmin: false
+            });
+            console.log(response);
+            if(response.status === 200) {
+                const res = await axios.post("https://ramit-api.sigve.dev/cart/create", {
+                    userId: response.data.user._id,
+                    total: 0,
+                    items: []
+                })
+                localStorage.setItem('user', JSON.stringify(response.data.accessToken));
+                let now = new Date();
+                localStorage.setItem('ttl', JSON.stringify(now.getTime() + (86400000 * 7)));
+                window.location.replace('https://ramit.sigve.dev/');
+            }
+        } catch (err) {
+            console.log(err);
+            setStatus(404);
         }
     };
 
@@ -54,6 +59,8 @@ const Register = () => {
                     <input type="password" id="pass" name="pass" required />
                     <label htmlFor="pass2">Confirm password</label>
                     <input type="password" id="pass2" name="pass2" required />
+                    {status === 400 && <p className="error">Passwords do not match</p>}
+                    {status === 404 && <p className="error">Email already in use</p>}
                     <p>Have an account? <a href="/login">Log in</a></p>
                     <button type="submit" className="btn">Register</button>
                 </form>

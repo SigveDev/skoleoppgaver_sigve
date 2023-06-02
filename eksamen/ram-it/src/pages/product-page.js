@@ -64,6 +64,7 @@ const ProductPage = (user) => {
                     <h1>{product.title}</h1>
                     <p>{product.description}</p>
                     <h3>{product.price} kr</h3>
+                    <p className="mva">Uten mva: {product.price * 0.75}</p>
                     {user.user ? <div className="product-page-content-right-login">
                         {cart.find((item) => item.id === id) ?
                             <div>

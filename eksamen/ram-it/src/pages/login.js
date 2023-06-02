@@ -1,8 +1,10 @@
 import axios from "axios";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import { useState } from "react";
 
 const Login = () => {
+    const [status, setStatus] = useState(true);
 
     const login = async (e) => {
         e.preventDefault();
@@ -19,6 +21,7 @@ const Login = () => {
             }
         } catch (err) {
             console.log(err);
+            setStatus(false);
         }
     };
 
@@ -30,6 +33,7 @@ const Login = () => {
                 <form onSubmit={login}>
                     <input type="email" id="email" placeholder="E-post" required />
                     <input type="password" id="pass" placeholder="Passord" required />
+                    {status === false && <p className="error">Feil e-post eller passord</p>}
                     <p>Don't have an account? <a href="/register">Register</a></p>
                     <input type="submit" className="btn" value="Logg Inn" />
                 </form>

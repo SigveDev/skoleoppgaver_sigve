@@ -53,7 +53,8 @@ const Cart = (data) => {
             </a>
             <div className="cart-info">
                 <h4>{data.title}</h4>
-                <p>{data.price} kr</p>
+                <h5>{data.price * data.amount} kr</h5>
+                <p className="mva">Uten mva: {(data.price * 0.75) * data.amount} kr</p>
                 <form>
                     <select onChange={() => {changeQuantity(data.id)}} id={"amount-" + data.id}>
                       {[...Array(10)].map((e, i) => {
