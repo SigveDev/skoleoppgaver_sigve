@@ -3,7 +3,7 @@ const Footer = () => {
         <div className="footer">
             <div className="footer-content">
                 <div className="footer-content-left">
-                    <h2>Om oss</h2>
+                    <h2>Om oss:</h2>
                     <h4>
                         Ram IT er en nettbutikk som selger datautstyr og lisenser.
                     </h4>

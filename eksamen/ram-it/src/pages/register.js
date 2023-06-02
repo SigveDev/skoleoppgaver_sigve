@@ -43,26 +43,26 @@ const Register = () => {
         <div className="register">
             <Header active="register" />
             <div className="register-content">
-                <h1>New User</h1>
+                <h1>Ny bruker</h1>
                 <form onSubmit={register}>
                     <div className="form-horizontal">
-                        <label htmlFor="fname">First name
+                        <label htmlFor="fname">Fornavn
                             <input type="text" id="fname" name="fname" placeholder="First name" required />
                         </label>
-                        <label htmlFor="lname">Last name
+                        <label htmlFor="lname">Etternavn
                             <input type="text" id="lname" name="lname" placeholder="Last name" required />
                         </label>
                     </div>
-                    <label htmlFor="email">Email address</label>
+                    <label htmlFor="email">E-post adresse</label>
                     <input type="email" id="email" name="email" placeholder="Email address" required />
-                    <label htmlFor="pass">Password</label>
+                    <label htmlFor="pass">Passord</label>
                     <input type="password" id="pass" name="pass" required />
-                    <label htmlFor="pass2">Confirm password</label>
+                    <label htmlFor="pass2">Passord igjen</label>
                     <input type="password" id="pass2" name="pass2" required />
-                    {status === 400 && <p className="error">Passwords do not match</p>}
-                    {status === 404 && <p className="error">Email already in use</p>}
-                    <p>Have an account? <a href="/login">Log in</a></p>
-                    <button type="submit" className="btn">Register</button>
+                    {status === 400 && <p className="error">Passordene er ikke like</p>}
+                    {status === 404 && <p className="error">E-post allerede i bruk</p>}
+                    <p>Har du en bruker? <a href="/login">Logg inn</a></p>
+                    <button type="submit" className="btn">Registrer</button>
                 </form>
             </div>
             <Footer />

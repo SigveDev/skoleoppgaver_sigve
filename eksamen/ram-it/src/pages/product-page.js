@@ -69,7 +69,7 @@ const ProductPage = (user) => {
                         {cart.find((item) => item.id === id) ?
                             <div>
                                 <button className="btn2" disabled>Lagt til i handlekurv</button>
-                                <a href="/cart">Til handelvognen</a>
+                                <a href="/cart">Til handlekurven</a>
                             </div>
                             :
                             <button className="btn" onClick={addCart}>Legg til i handlekurv</button>

@@ -77,7 +77,7 @@ const CartPage = (user) => {
                             <div className="cart-bottom">
                                 {cart.total > 0 ? <p>Frakt: 49kr</p> : null}
                                 {cart.total > 0 ? <h2>Total: {cart.total + 49} kr</h2> : <h2>Total: 0 kr</h2>}
-                                {cart.total > 0 ? <p className="mva">Uten mva: {cart.total * 0.75} kr</p> : <p className="mva">Uten mva: 0 kr</p>}
+                                {cart.total > 0 ? <p className="mva">Uten mva: {(cart.total  + 49) * 0.75} kr</p> : <p className="mva">Uten mva: 0 kr</p>}
                                 <input type="submit" className="checkout" value="Betal med kort"/>
                                 <input type="submit" className="vipps" value="Betal med vipps"/>
                             </div>

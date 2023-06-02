@@ -34,7 +34,7 @@ const Login = () => {
                     <input type="email" id="email" placeholder="E-post" required />
                     <input type="password" id="pass" placeholder="Passord" required />
                     {status === false && <p className="error">Feil e-post eller passord</p>}
-                    <p>Don't have an account? <a href="/register">Register</a></p>
+                    <p>Har du ikke en bruker? <a href="/register">Ny bruker</a></p>
                     <input type="submit" className="btn" value="Logg Inn" />
                 </form>
             </div>

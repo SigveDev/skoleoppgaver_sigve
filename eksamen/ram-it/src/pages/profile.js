@@ -21,7 +21,7 @@ const Profile = ({ user }) => {
                     localStorage.removeItem('user');
                     localStorage.removeItem('ttl');
                     window.location.replace('https://ramit.sigve.dev/');
-                }} className="logout">Logg out</button>
+                }} className="logout">Logg ut</button>
             </div>
             <Footer />
         </div>

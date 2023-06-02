@@ -50,7 +50,8 @@ const OrderInfo = ({ user }) => {
                         <p>{order.address}</p>
                         <p>{order.zip} {order.city}</p>
                         <p>{new Date(order.createdAt).toDateString()}</p>
-                        <h3>Total: {order.total} kr</h3>
+                        <h3 className="total">Total: {order.total} kr</h3>
+                        <p className="mva">Uten mva: {order.total * 0.75}</p>
                         <button className="cancelButton" onClick={cancelOrder}>Avbryt bestillingen</button>
                     </div>
                     <div className="order-info-content-grid-right">
