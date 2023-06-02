@@ -126,7 +126,7 @@ header .header-bottom .header-content .header-nav a:hover {
 /*Footer Component*/
 .footer {
   width: calc(100vw - 10px);
-  height: 15vh;
+  height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -171,6 +171,7 @@ header .header-bottom .header-content .header-nav a:hover {
 .product img {
   width: 100%;
   object-fit: cover;
+  border-radius: 5px;
   aspect-ratio: 16/13;
 }
 
@@ -184,7 +185,7 @@ header .header-bottom .header-content .header-nav a:hover {
 }
 .home .home-content {
   width: calc(100vw - 10px);
-  min-height: 55vh;
+  min-height: 65vh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -204,7 +205,7 @@ header .header-bottom .header-content .header-nav a:hover {
 /*Product Page*/
 .product-page {
   width: calc(100vw - 10px);
-  min-height: 100vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -212,7 +213,7 @@ header .header-bottom .header-content .header-nav a:hover {
 .product-page .product-page-content {
   width: 100%;
   max-width: 1080px;
-  min-height: 70vh;
+  min-height: 65vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -282,7 +283,7 @@ header .header-bottom .header-content .header-nav a:hover {
 /*Login Page*/
 .login {
   width: calc(100vw - 10px);
-  min-height: 100vh;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -291,7 +292,7 @@ header .header-bottom .header-content .header-nav a:hover {
 .login .login-content {
   width: 100%;
   max-width: 1080px;
-  min-height: 70vh;
+  min-height: 65vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -336,7 +337,7 @@ header .header-bottom .header-content .header-nav a:hover {
 /*PleaseLogin Page*/
 .please-login {
   width: calc(100vw - 10px);
-  min-height: 100vh;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -345,7 +346,7 @@ header .header-bottom .header-content .header-nav a:hover {
 .please-login .please-login-content {
   width: 100%;
   max-width: 1080px;
-  min-height: 70vh;
+  min-height: 65vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -355,7 +356,7 @@ header .header-bottom .header-content .header-nav a:hover {
 /*Profile Page*/
 .profile-page {
   width: calc(100vw - 10px);
-  min-height: 100vh;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -364,7 +365,7 @@ header .header-bottom .header-content .header-nav a:hover {
 .profile-page .profile-content {
   width: 100%;
   max-width: 1080px;
-  min-height: 70vh;
+  min-height: 65vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -427,7 +428,7 @@ header .header-bottom .header-content .header-nav a:hover {
 /*Register Page*/
 .register {
   width: calc(100vw - 10px);
-  min-height: 100vh;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -436,7 +437,7 @@ header .header-bottom .header-content .header-nav a:hover {
 .register .register-content {
   width: 100%;
   max-width: 1080px;
-  min-height: 70vh;
+  min-height: 65vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -496,7 +497,7 @@ header .header-bottom .header-content .header-nav a:hover {
 /*NewProduct Page*/
 .new-product {
   width: calc(100vw - 10px);
-  min-height: 100vh;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -505,7 +506,7 @@ header .header-bottom .header-content .header-nav a:hover {
 .new-product .new-product-content {
   width: 100%;
   max-width: 1080px;
-  min-height: 70vh;
+  min-height: 65vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -594,7 +595,7 @@ header .header-bottom .header-content .header-nav a:hover {
 /*Category Page*/
 .category {
   width: calc(100vw - 10px);
-  min-height: 100vh;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -603,7 +604,7 @@ header .header-bottom .header-content .header-nav a:hover {
 .category .category-content {
   width: 100%;
   max-width: 1080px;
-  min-height: 70vh;
+  min-height: 65vh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -669,7 +670,7 @@ header .header-bottom .header-content .header-nav a:hover {
 /*Cart Page*/
 .cart-page {
   width: calc(100vw - 10px);
-  min-height: 100vh;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -678,7 +679,7 @@ header .header-bottom .header-content .header-nav a:hover {
 .cart-page .cart-content {
   width: 100%;
   max-width: 1080px;
-  min-height: 70vh;
+  min-height: 65vh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -753,14 +754,14 @@ header .header-bottom .header-content .header-nav a:hover {
 /*Order Page*/
 .order {
   width: calc(100vw - 10px);
-  min-height: 100vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .order .order-content {
   width: calc(100vw - 10px);
-  min-height: 55vh;
+  min-height: 65vh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -795,6 +796,14 @@ header .header-bottom .header-content .header-nav a:hover {
   margin: 20px 0 0 0;
   padding: 0;
 }
+.order .order-content .order-content-grid .order-content-grid-item h2 {
+  margin-bottom: 5px;
+}
+.order .order-content .order-content-grid .order-content-grid-item .date {
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 0;
+}
 .order .order-content .order-content-grid .order-content-grid-item p {
   margin: 4px 0;
   padding: 0;
@@ -804,6 +813,12 @@ header .header-bottom .header-content .header-nav a:hover {
 }
 .order .order-content .order-content-grid .order-content-grid-item .order-total {
   color: var(--primary-color);
+  margin-bottom: 0;
+}
+.order .order-content .order-content-grid .order-content-grid-item .mva {
+  margin: 0;
+  padding: 0;
+  font-size: 0.8em;
 }
 
 /*Small-Order Component*/
@@ -868,14 +883,14 @@ header .header-bottom .header-content .header-nav a:hover {
 /*Dashboard Page*/
 .dashboard {
   width: calc(100vw - 10px);
-  min-height: 100vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .dashboard .dashboard-content {
   width: calc(100vw - 10px);
-  min-height: 55vh;
+  min-height: 65vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -926,14 +941,14 @@ header .header-bottom .header-content .header-nav a:hover {
 /*OrderInfo Page*/ 
 .order-info {
   width: calc(100vw - 10px);
-  min-height: 100vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .order-info .order-info-content {
   width: calc(100vw - 10px);
-  min-height: 55vh;
+  min-height: 65vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -959,6 +974,15 @@ header .header-bottom .header-content .header-nav a:hover {
 .order-info .order-info-content .order-info-content-grid .order-info-content-grid-left p {
   margin: 0;
   padding: 0;
+}
+.order-info .order-info-content .order-info-content-grid .order-info-content-grid-left .total {
+  margin-bottom: 0;
+}
+.order-info .order-info-content .order-info-content-grid .order-info-content-grid-left .mva {
+  margin: 0;
+  margin-bottom: 30px;
+  padding: 0;
+  font-size: 0.8em;
 }
 .order-info .order-info-content .order-info-content-grid .order-info-content-grid-left .cancelButton {
   width: 100%;
@@ -992,7 +1016,7 @@ header .header-bottom .header-content .header-nav a:hover {
 /*Edit-Product Page*/
 .edit-product {
   width: calc(100vw - 10px);
-  min-height: 100vh;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1001,7 +1025,7 @@ header .header-bottom .header-content .header-nav a:hover {
 .edit-product .edit-product-content {
   width: 100%;
   max-width: 1080px;
-  min-height: 70vh;
+  min-height: 65vh;
   display: flex;
   justify-content: center;
   align-items: center;
