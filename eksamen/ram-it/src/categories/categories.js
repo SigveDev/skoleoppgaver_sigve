@@ -20,11 +20,36 @@ const Category = ({ category }) => {
     }
     , [category]);
 
+    const categoryTitle = (category) => {
+        switch (category) {
+            case "pc":
+                return "PC";
+            case "laptop":
+                return "Laptop";
+            case "mobil":
+                return "Mobil";
+            case "skjerm":
+                return "Skjerm";
+            case "tilbehor":
+                return "Tilbehør";
+            case "hoyttaler":
+                return "Høyttaler";
+            case "kamera":
+                return "Kamera";
+            case "lisens":
+                return "Lisens";
+            case "annet":
+                return "Annet";
+            default:
+                return "Kategori";
+        }
+    };
+
     return (
         <div className="category">
             <Header active={category} />
             <div className="category-content">
-                <h1>{category}</h1>
+                <h1>{categoryTitle(category)}</h1>
                 {products ?
                 <div className="category-content-grid">
                     {products.map((product) => (
