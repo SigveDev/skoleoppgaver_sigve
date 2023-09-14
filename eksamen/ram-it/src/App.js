@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     const checkUser = async () => {
-      const response = await axios.get('https://ramit-api.sigve.dev/auth', {
+      const response = await axios.get('https://ramit-api.hcklikk.com/auth', {
         headers: {
           Authorization: JSON.parse(localStorage.getItem('user'))
         }

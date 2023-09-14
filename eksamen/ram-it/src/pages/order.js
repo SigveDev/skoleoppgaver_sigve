@@ -10,7 +10,7 @@ const Order = ({ user }) => {
     useEffect(() => {
         const getOrders = async () => {
             try {
-                const res = await axios.get(`https://ramit-api.sigve.dev/order/all/${user.id}`);
+                const res = await axios.get(`https://ramit-api.hcklikk.com/order/all/${user.id}`);
                 setOrders(res.data);
             } catch (err) {
                 console.log(err);

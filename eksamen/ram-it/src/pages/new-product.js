@@ -23,14 +23,14 @@ const NewProduct = ({ user }) => {
         const data = new FormData();
         data.append("image", file);
         const res = await axios.post(
-            "https://ramit-api.sigve.dev/upload",
+            "https://ramit-api.hcklikk.com/upload",
             data
         );
         console.log(res.data.file);
         newProduct.image = res.data.file;
         try {
-            await axios.post("https://ramit-api.sigve.dev/product/create", newProduct);
-            window.location.replace("https://ramit.sigve.dev/");
+            await axios.post("https://ramit-api.hcklikk.com/product/create", newProduct);
+            window.location.replace("https://ramit.hcklikk.com/");
         }
         catch (err) {
             console.log(err);

@@ -13,7 +13,7 @@ const CartPage = (user) => {
     useEffect(() => {
         const getCart = async () => {
             try {
-                const res = await axios.get("https://ramit-api.sigve.dev/cart/find/" + user.user.id);
+                const res = await axios.get("https://ramit-api.hcklikk.com/cart/find/" + user.user.id);
                 setCart(res.data[0]);
             } catch (err) {
                 console.log(err);
@@ -25,7 +25,7 @@ const CartPage = (user) => {
     const order = async (e) => {
         e.preventDefault();
         try {
-            const cart = await axios.get("https://ramit-api.sigve.dev/cart/find/" + user.user.id);
+            const cart = await axios.get("https://ramit-api.hcklikk.com/cart/find/" + user.user.id);
             if(cart.data[0].items.length === 0) return alert("Du har ingen varer i handlekurven");
             const order = {
                 items: cart.data[0].items,
@@ -36,8 +36,8 @@ const CartPage = (user) => {
                 city: document.getElementById("poststed").value,
                 zip: document.getElementById("postnummer").value,
             };
-            await axios.post("https://ramit-api.sigve.dev/order/create", order);
-            await axios.put("https://ramit-api.sigve.dev/cart/update/" + user.user.id, {items: [], total: 0});
+            await axios.post("https://ramit-api.hcklikk.com/order/create", order);
+            await axios.put("https://ramit-api.hcklikk.com/cart/update/" + user.user.id, {items: [], total: 0});
             window.location.replace("/order");
         } catch (err) {
             console.log(err);

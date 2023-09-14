@@ -20,7 +20,7 @@ const Profile = ({ user }) => {
                 <button onClick={() => {
                     localStorage.removeItem('user');
                     localStorage.removeItem('ttl');
-                    window.location.replace('https://ramit.sigve.dev/');
+                    window.location.replace('https://ramit.hcklikk.com/');
                 }} className="logout">Logg ut</button>
             </div>
             <Footer />

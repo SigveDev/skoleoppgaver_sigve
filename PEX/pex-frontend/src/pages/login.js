@@ -8,7 +8,6 @@ const Login = () => {
             const email = document.getElementById('email').value;
             const password = document.getElementById('pass').value;
             const response = await axios.get('http://localhost:5000/user/login/' + email + "/" + password, {Credentials: true });
-            console.log(response);
             if(response.status === 200) {
                 localStorage.setItem('user', JSON.stringify(response.data.accessToken));
                 let now = new Date();
@@ -17,6 +16,7 @@ const Login = () => {
             }
         } catch (err) {
             console.log(err);
+            alert('wrong email or password');
         }
     };
 

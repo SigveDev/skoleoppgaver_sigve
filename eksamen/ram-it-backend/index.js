@@ -28,7 +28,7 @@ mongoose.connect(process.env.MONGO_URL, {
 //setter opp for bruk av cors og hvilet domene som kan bruke serveren
 app.use(
     cors({
-        origin: "https://ramit.sigve.dev",
+        origin: "https://ramit.hcklikk.com",
         methods: "GET,POST,PUT,DELETE",
         credentials: true
     })

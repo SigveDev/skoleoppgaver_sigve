@@ -10,7 +10,7 @@ const Home = () => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const res = await axios.get('https://ramit-api.sigve.dev/product/all');
+                const res = await axios.get('https://ramit-api.hcklikk.com/product/all');
                 setProducts(res.data);
             } catch (err) {
                 console.log(err);

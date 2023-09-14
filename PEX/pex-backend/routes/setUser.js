@@ -39,6 +39,24 @@ router.post('/register', async (req, res) => {
     }
 });
 
+router.post('/register/all', async (req, res) => {
+    let hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+
+    const newUser = new User({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: hashedPassword,
+        isAdmin: false,
+    });
+    try {
+        const user = await newUser.save();
+        res.status(200).json("user created!");
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.get('/login/:email/:pass', async (req, res) => {
     try {
         let user = await User.find({ email: req.params.email });
@@ -71,6 +89,26 @@ router.get('/login/:email/:pass', async (req, res) => {
         });
     } catch (err) {
         res.status(500).json("no func");
+    }
+});
+
+router.get('/all', async (req, res) => {
+    try {
+        const users = await User.find();
+        res.status(200).json(users);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.put("/admin", async (req, res) => {
+    try {
+        const user = await User.findByIdAndUpdate(req.body.id, {
+            isAdmin: req.body.isAdmin,
+        });
+        res.status(200).json("The user has been updated!");
+    } catch (err) {
+        res.status(500).json(err);
     }
 });
 

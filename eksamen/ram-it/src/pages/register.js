@@ -14,7 +14,7 @@ const Register = () => {
                 return;
             }
 
-            const response = await axios.post('https://ramit-api.sigve.dev/user/register', {
+            const response = await axios.post('https://ramit-api.hcklikk.com/user/register', {
                 firstname: document.getElementById('fname').value,
                 lastname: document.getElementById('lname').value,
                 email: document.getElementById('email').value,
@@ -23,7 +23,7 @@ const Register = () => {
             });
             console.log(response);
             if(response.status === 200) {
-                const res = await axios.post("https://ramit-api.sigve.dev/cart/create", {
+                const res = await axios.post("https://ramit-api.hcklikk.com/cart/create", {
                     userId: response.data.user._id,
                     total: 0,
                     items: []
@@ -31,7 +31,7 @@ const Register = () => {
                 localStorage.setItem('user', JSON.stringify(response.data.accessToken));
                 let now = new Date();
                 localStorage.setItem('ttl', JSON.stringify(now.getTime() + (86400000 * 7)));
-                window.location.replace('https://ramit.sigve.dev/');
+                window.location.replace('https://ramit.hcklikk.com/');
             }
         } catch (err) {
             console.log(err);

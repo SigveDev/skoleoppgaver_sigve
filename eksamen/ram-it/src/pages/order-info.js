@@ -12,7 +12,7 @@ const OrderInfo = ({ user }) => {
     useEffect(() => {
         const getOrder = async () => {
             try {
-                const res = await axios.get("https://ramit-api.sigve.dev/order/find/order/" + id);
+                const res = await axios.get("https://ramit-api.hcklikk.com/order/find/order/" + id);
                 setOrder(res.data);
             } catch (err) {
                 console.log(err);
@@ -29,7 +29,7 @@ const OrderInfo = ({ user }) => {
 
     const cancelOrder = async () => {
         try {
-            const res = await axios.delete("https://ramit-api.sigve.dev/order/delete/" + id);
+            const res = await axios.delete("https://ramit-api.hcklikk.com/order/delete/" + id);
             console.log(res.data);
             window.location.replace("/dashboard");
         } catch (err) {

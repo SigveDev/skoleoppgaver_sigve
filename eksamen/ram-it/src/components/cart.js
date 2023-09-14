@@ -7,7 +7,7 @@ const Cart = (data) => {
         console.log(e);
         const change = async () => {
             try {
-                const old = await axios.get("https://ramit-api.sigve.dev/cart/find/" + data.owner);
+                const old = await axios.get("https://ramit-api.hcklikk.com/cart/find/" + data.owner);
                 const oldData = old.data[0];
                 const newItems = oldData.items.map((item) => {
                     if (item.id === id) {
@@ -19,7 +19,7 @@ const Cart = (data) => {
                 const newCart = {
                     items: newItems,
                 };
-                await axios.put("https://ramit-api.sigve.dev/cart/update/" + data.owner, newCart);
+                await axios.put("https://ramit-api.hcklikk.com/cart/update/" + data.owner, newCart);
                 window.location.reload();
             } catch (err) {
                 console.log(err);
@@ -31,13 +31,13 @@ const Cart = (data) => {
     const removeItem = (id) => {
         const remove = async () => {
             try {
-                const old = await axios.get("https://ramit-api.sigve.dev/cart/find/" + data.owner);
+                const old = await axios.get("https://ramit-api.hcklikk.com/cart/find/" + data.owner);
                 const oldData = old.data[0];
                 const newItems = oldData.items.filter((item) => item.id !== id);
                 const newCart = {
                     items: newItems,
                 };
-                await axios.put("https://ramit-api.sigve.dev/cart/update/" + data.owner, newCart);
+                await axios.put("https://ramit-api.hcklikk.com/cart/update/" + data.owner, newCart);
                 window.location.reload();
             } catch (err) {
                 console.log(err);
@@ -49,7 +49,7 @@ const Cart = (data) => {
     return (
         <div className="small-product">
             <a href={"/product/" + data.id}>
-                <img src={"https://ramit-api.sigve.dev/uploads/" + data.image} alt={data.title} />
+                <img src={"https://ramit-api.hcklikk.com/uploads/" + data.image} alt={data.title} />
             </a>
             <div className="cart-info">
                 <h4>{data.title}</h4>
